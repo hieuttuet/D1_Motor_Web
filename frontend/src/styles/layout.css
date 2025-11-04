@@ -1,0 +1,37 @@
+.layout-container {
+  display: flex;            /* ✅ Sidebar và main-content nằm ngang */
+  height: 100vh;            /* Toàn màn hình */
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Sidebar cố định bên trái */
+.sidebar {
+  width: 220px;             /* ✅ cố định kích thước */
+  flex-shrink: 0;           /* Không co lại */
+  background-color: #1f2937;
+  color: white;
+  position: fixed;          /* ✅ giữ cố định */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+/* Vùng nội dung bên phải */
+.main-content {
+  margin-left: 220px;       /* ✅ chừa chỗ cho Sidebar */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Khu vực chứa nội dung trang (Home, v.v...) */
+.content-area {
+  flex: 1;
+  background-color: #f4f5f7;
+  overflow: hidden; /* ✅ Không cho scroll */
+  padding: 0;       /* ✅ bỏ padding để Home fill 100% */
+  margin: 10px;
+}

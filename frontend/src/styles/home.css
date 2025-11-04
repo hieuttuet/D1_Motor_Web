@@ -1,0 +1,16 @@
+.home-container {
+  position: relative;
+  width: 100;
+  height: 100; /* đảm bảo cao bằng chiều cao viewport */
+  color: white;
+  display: flex; /* nếu bạn muốn căn giữa nội dung */
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+.home-container > * {
+  position: relative;
+  z-index: 1;
+}
