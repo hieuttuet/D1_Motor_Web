@@ -2,8 +2,10 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./src/routes/auth.routes.js";
+import userRoutes from "./src/routes/user.routes.js";
 
 dotenv.config();
+BigInt.prototype.toJSON = function() { return Number(this); }; //JSON.stringify() tự động chuyển BigInt → Number.
 const app = express();
 
 app.use(cors());
@@ -15,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/api", authRoutes);
-
+app.use("/api", userRoutes); 
 
 
 app.get("/", (req, res) => res.send("Backend running 🚀"));

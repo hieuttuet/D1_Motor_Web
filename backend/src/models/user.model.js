@@ -1,15 +1,30 @@
-// Giả sử bạn đã có bảng "users" trong DB
-// CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), password VARCHAR(255));
-
 import db from "../config/db.js";
 
+//login
 export const findUserByUsername = async (username) => {
   console.log('Finding user by username:', username);
   const rows = await db.query("SELECT * FROM users WHERE user_name = ?", [username]);
   return rows[0];
 };
-
-export const findUserById = async (id) => {
-  const [rows] = await db.query("SELECT * FROM users WHERE id = ?", [id]);
+export const findUserById = async (user_id) => {
+  const rows = await db.query("SELECT * FROM users WHERE user_id = ?", [user_id]);
   return rows[0];
+}
+// Admin - User Management
+export const getAllUsers = async () => {
+  const rows = await db.query("SELECT user_id, user_name, password, full_name, role FROM users");
+  return rows;
+};
+export const createUser = async (userData) => {
+  const { user_name, password, full_name, role } = userData;
+  const result = await db.query("INSERT INTO users (user_name, password, full_name, role) VALUES (?, ?, ?,?)", [user_name, password, full_name,role]);
+  return { user_id: result.insertId, user_name, role };
+};
+
+export const updateUser = async (user_id, userData) => {
+  const { user_name, password, role } = userData;
+  await db.query("UPDATE users SET user_name = ?, password = ?, role = ? WHERE user_id = ?", [user_name, password, role, user_id]);
+};
+export const deleteUser = async (user_id) => {
+  await db.query("DELETE FROM users WHERE user_id = ?", [user_id]);
 };

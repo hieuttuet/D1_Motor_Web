@@ -1,6 +1,6 @@
-import "../styles/header.css";
-import { useAuth } from "../hooks/useAuth.jsx";
-
+import "../../styles/header.css";
+import { useAuth } from "../../hooks/useAuth.jsx";
+import { FaSignOutAlt, FaUser  } from "react-icons/fa";
 export default function Header() {
   const { auth, logout } = useAuth();
 
@@ -28,10 +28,11 @@ export default function Header() {
 
       <div className="header-right">
         <span className="user-info">
-          👤 {auth?.user?.full_name || "Guest"}
+          <FaUser style={{ marginRight: 6 }} />
+           {auth?.user?.full_name || "Guest"}
         </span>
         <button className="logout-btn" onClick={handleLogout}>
-          Logout
+          <FaSignOutAlt style={{ marginRight: "6px" }} /> Logout
         </button>
       </div>
     </header>

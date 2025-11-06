@@ -4,12 +4,14 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import { AuthProvider } from "./hooks/useAuth.jsx"; // ✅ thêm dòng này
+import ErrorModal from "./components/Notification/ErrorModal.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <App />
+        <ErrorModal />
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>

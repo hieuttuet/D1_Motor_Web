@@ -8,7 +8,7 @@ import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import partronLoginImg from "../../assets/icons/partron_login.png";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [user_name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Thêm state này
   const [rememberMe, setRememberMe] = useState(false);
@@ -33,12 +33,12 @@ export default function Login() {
     setErrorMsg("");
     setLoading(true);
     try {
-      const resp = await loginUser({ username, password });
+      const resp = await loginUser({ user_name, password });
       // Giả sử API trả về { token, user }
       const { token, user } = resp.data;
 
       // 1) Lưu email nếu remember
-      if (rememberMe) localStorage.setItem("rememberedUsername", username);
+      if (rememberMe) localStorage.setItem("rememberedUsername", user_name);
       else localStorage.removeItem("rememberedUsername");
 
       // 2) Cập nhật context/auth (ví dụ lưu token trong memory/context)
@@ -59,7 +59,6 @@ export default function Login() {
       setLoading(false);
     }
   };
-
   return (
     <div className="login-background">
         <div className="login-box">
@@ -70,7 +69,7 @@ export default function Login() {
               <span className="icon"><FaUser /></span>
               <input
                 type="username"
-                value={username}
+                value={user_name}
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 placeholder="Username"

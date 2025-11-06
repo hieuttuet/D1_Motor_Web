@@ -4,6 +4,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 // Component Provider bao quanh App
+// Xử lý trường hợp tắt trình duyệt nhưng vẫn giữ trạng thái đăng nhập
 export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(() => {
   const savedAuth = sessionStorage.getItem("auth");

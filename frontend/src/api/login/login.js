@@ -5,7 +5,7 @@ const apiLogin = axios.create({
   timeout: 5000,
 });
 
-export const loginUser = (credentials) => apiLogin.post('/login', credentials);
+export const loginUser = (credentials) => apiLogin.post('/login', credentials); // credentials là dữ liệu gửi đến backend
 export const logoutUser = () => apiLogin.post('/logout');
 
 export default apiLogin;
