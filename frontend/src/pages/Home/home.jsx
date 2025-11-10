@@ -12,7 +12,6 @@ export default function Home() {
   };
 
   return (
-    <div style={backgroundStyle} className="home-container">
-    </div>
+    <div style={backgroundStyle} className="home-container"></div>
   );
 }

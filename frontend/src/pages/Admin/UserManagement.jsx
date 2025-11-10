@@ -4,7 +4,6 @@ import UserFormModal from "../../components/Admin/UserFormModal.jsx";
 import { getUsers, createUser, updateUser, deleteUser } from "../../api/admin/userApi.js";
 import "../../styles/userManagement.css";
 import { toast } from 'react-toastify';
-import { toastError } from "../../components/Notification/toastUtils.jsx";
 import { showError } from "../../components/Notification/errorService.jsx";
 export default function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -12,8 +11,9 @@ export default function UserManagement() {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [editUser, setEditUser] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' }); // sắp xếp
   useEffect(() => {
-  document.title = "Amin Page";
+  document.title = "Admin Page";
 }, []);
   // ✅ Lấy danh sách user từ backend
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function UserManagement() {
       setEditUser(null);
     } catch (error) {
       console.error("Lỗi khi lưu người dùng:", error);
-      await showError("Lỗi khi cập nhật người dùng!");
+      await showError("Lỗi khi cập nhật người dùng!", error);
     }
   };
 
@@ -70,11 +70,25 @@ export default function UserManagement() {
         toast.success("Xóa người dùng thành công!");
         setUsers(users.filter((u) => u.user_id !== user_id));
       } catch (error) {
-        toastError("Lỗi khi xóa người dùng:", error);
+        await showError("Lỗi khi xóa người dùng!", error);
       }
     }
   };
+// ====== SORT ======
+  const handleSort = (key) => {
+  let direction = 'asc';
+  if (sortConfig.key === key && sortConfig.direction === 'asc') {
+    direction = 'desc';
+  }
+  setSortConfig({ key, direction });
 
+  const sorted = [...users].sort((a, b) => {
+    if (a[key] < b[key]) return direction === 'asc' ? -1 : 1;
+    if (a[key] > b[key]) return direction === 'asc' ? 1 : -1;
+    return 0;
+  });
+  setUsers(sorted);
+};
   return (
     <div className="user-container">
       <div className="user-header">
@@ -92,13 +106,14 @@ export default function UserManagement() {
         </div>
       </div>
 
-      <table className="user-table">
+      <div className="table-wrapper">
+        <table className="user-table">
         <thead>
           <tr>
-            <th>User Name</th>
-            <th>Password</th>
-            <th>Full Name</th>
-            <th>Role</th>
+            <th onClick={() => handleSort("user_name")}>User Name</th>
+            <th onClick={() => handleSort("password")}>Password</th>
+            <th onClick={() => handleSort("full_name")}>Full Name</th>
+            <th onClick={() => handleSort("role")}>Role</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -121,6 +136,7 @@ export default function UserManagement() {
           ))}
         </tbody>
       </table>
+      </div>
 
       {modalOpen && (
         <UserFormModal

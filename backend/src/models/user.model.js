@@ -22,8 +22,8 @@ export const createUser = async (userData) => {
 };
 
 export const updateUser = async (user_id, userData) => {
-  const { user_name, password, role } = userData;
-  await db.query("UPDATE users SET user_name = ?, password = ?, role = ? WHERE user_id = ?", [user_name, password, role, user_id]);
+  const { user_name, password, role,full_name } = userData;
+  await db.query("UPDATE users SET user_name = ?, password = ?, role = ?, full_name = ? WHERE user_id = ?", [user_name, password, role, full_name, user_id]);
 };
 export const deleteUser = async (user_id) => {
   await db.query("DELETE FROM users WHERE user_id = ?", [user_id]);

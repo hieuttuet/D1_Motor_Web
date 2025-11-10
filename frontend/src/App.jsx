@@ -7,6 +7,7 @@ import Layout from "./components/Main/Layout.jsx";
 import Home from "./pages/Home/Home.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import AdminUser from "./pages/Admin/UserManagement.jsx";
+import ConsumableSpec from "./pages/Admin/ConsumableSpec.jsx";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
           <Route path="/home" element={<Home />} />
           <Route path="/admin/users" element={<AdminUser />} />
+          <Route path="/admin/consumable-specs" element={<ConsumableSpec />} />
         </Route>
 
         {/* Mặc định redirect "/" → "/login" */}

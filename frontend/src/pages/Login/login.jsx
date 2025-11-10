@@ -6,6 +6,7 @@ import { useAuth } from "../../hooks/useAuth.jsx";
 import "../../styles/login.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import partronLoginImg from "../../assets/icons/partron_login.png";
+import bgLogin from "../../assets/icons/bg_login.png";
 
 export default function Login() {
   const [user_name, setUsername] = useState("");
@@ -42,7 +43,8 @@ export default function Login() {
       else localStorage.removeItem("rememberedUsername");
 
       // 2) Cập nhật context/auth (ví dụ lưu token trong memory/context)
-      login({ user, token });
+      const { password: _, ...userWithoutPassword } = user;
+      login({ user: userWithoutPassword, token });
 
       // 3) Điều hướng
       navigate("/home");
@@ -60,7 +62,7 @@ export default function Login() {
     }
   };
   return (
-    <div className="login-background">
+    <div className="login-background" style={{ backgroundImage: `url(${bgLogin})` }}>
         <div className="login-box">
           <form className="login-form" onSubmit={handleLogin}>
             <img src={partronLoginImg} alt="Member login" className="login-title" />

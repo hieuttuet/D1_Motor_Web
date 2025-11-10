@@ -2,13 +2,15 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
 import "../../styles/layout.css";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 export default function Layout() {
+  const [collapsed, setCollapsed] = useState(false);
   return (
     <div className="layout-container">
-      <Sidebar />
-      <div className="main-content">
+      <Sidebar onToggle={setCollapsed} />
+      <div className={`main-content ${collapsed ? "collapsed" : ""}`}>
         <Header />
         <div className="content-area">
           <Outlet />
