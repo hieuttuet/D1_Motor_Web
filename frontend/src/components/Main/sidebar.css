@@ -1,0 +1,275 @@
+/* === SIDEBAR CHUNG === */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #3A73AA 0%, #2f6393 100%);
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 4px 0 14px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: "Inter", sans-serif;
+  transition: all 0.35s ease;
+}
+
+/* === LOGO NỔI BẬT === */
+.sidebar-logo {
+  text-align: center;
+  padding: 16px 0;
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 -2px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient chữ + ánh sáng chuyển động */
+.sidebar-logo a {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffffff, #a5d8ff, #ffffff);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logoShine 3.5s linear infinite;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  /* Tăng độ dày ảo */
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, 0.5),
+    0 0 4px rgba(255, 255, 255, 0.5),
+    1px 1px 1px rgba(255, 255, 255, 0.5),
+}
+
+
+/* Hiệu ứng ánh sáng quét ngang chữ */
+@keyframes logoShine {
+  0% {
+    background-position: -100%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+/* Hover sáng rực hơn */
+.sidebar-logo a:hover {
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.7);
+  filter: brightness(1.2);
+}
+
+/* === MENU CHA === */
+.menu-title {
+  padding: 12px 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  color: #e0e7ff;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  border-radius: 8px;
+  margin: 4px 10px;
+  position: relative;
+}
+
+.menu-title:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.menu-title.open {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* === ARROW === */
+.arrow {
+  transition: transform 0.35s ease;
+  color: #f1f5f9;
+}
+
+.menu-title.open .arrow {
+  transform: rotate(90deg);
+}
+
+/* === SUBMENU CONTAINER === */
+.submenu-container {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 14px;
+}
+
+.submenu-container.open {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideDown 0.35s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === SUBMENU ITEM === */
+.submenu-item {
+  display: block;
+  padding: 9px 20px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border-left: 3px solid transparent;
+  font-size: 14px;
+  border-radius: 7px;
+  position: relative;
+  margin: 0px 0px 0px 15px;
+}
+
+.submenu-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border-left: 3px solid #93c5fd;
+  transform: translateX(3px);
+}
+
+.submenu-item.active {
+  background: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-weight: 600;
+  border-left: 3px solid #60a5fa;
+}
+
+/* === HIỆU ỨNG CLICK === */
+.submenu-item:active {
+  transform: scale(0.98);
+}
+
+/* === SCROLLBAR === */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* === MENU SECTION === */
+.menu-section {
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 4px;
+}
+/* === Nút toggle === */
+.btn-toggle {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 13px;
+  right: -12px;
+  z-index: 10;
+  transition: all 0.3s ease;
+  opacity: 0.85;
+}
+
+.btn-toggle:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.btn-toggle:focus,
+.btn-toggle:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* === CHẾ ĐỘ THU GỌN === */
+.sidebar.collapsed {
+  width: 20px;
+  transition: all 0.35s ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Khi thu gọn, logo nhỏ lại và căn giữa nút FaBars */
+.sidebar.collapsed .sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.sidebar.collapsed .sidebar-logo a {
+  font-size: 0px; /* ẩn chữ nhưng vẫn giữ phần nền/logo */
+  pointer-events: none;
+}
+
+/* Nút FaBars hiển thị giữa logo */
+.sidebar.collapsed .btn-toggle {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  opacity: 1;
+  margin: 0 auto;
+}
+
+/* Ẩn toàn bộ menu, chỉ giữ lại màu nền sidebar */
+.sidebar.collapsed .sidebar-menu {
+  display: none;
+}
+
+/* Ẩn các nội dung phụ */
+.sidebar.collapsed .menu-title span,
+.sidebar.collapsed .submenu-item,
+.sidebar.collapsed .arrow {
+  display: none !important;
+}
+
+/* Giữ đồng bộ gradient, viền, shadow */
+.sidebar.collapsed {
+  background: linear-gradient(180deg, #3A73AA 0%, #2f6393 100%);
+
+}
+
+/* Hiệu ứng hover cho nút mở lại */
+.sidebar.collapsed .btn-toggle:hover {
+  color: #a5d8ff;
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+}

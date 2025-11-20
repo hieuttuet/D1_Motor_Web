@@ -1,4 +1,4 @@
-import "../../styles/header.css";
+import "./header.css";
 import { useAuth } from "../../hooks/useAuth.jsx";
 import { FaSignOutAlt, FaUser  } from "react-icons/fa";
 export default function Header() {

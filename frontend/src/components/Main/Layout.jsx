@@ -1,7 +1,7 @@
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Footer from "./Footer";
-import "../../styles/layout.css";
+import "./layout.css";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 

@@ -3,15 +3,15 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import { AuthProvider } from "./hooks/useAuth.jsx"; // ✅ thêm dòng này
-import ErrorModal from "./components/Notification/ErrorModal.jsx";
+import { AuthProvider } from "./hooks/useAuth.jsx"; // xac nhan login
+import MessageModal from "./components/Notification/messageModal.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
         <App />
-        <ErrorModal />
+        <MessageModal />
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>

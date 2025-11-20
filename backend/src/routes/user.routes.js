@@ -1,19 +1,20 @@
 // routes/user.routes.js
 import express from "express";
-import { getUsers, addUser, updateUser, deleteUser } from "../controllers/user.controller.js";
+import { getUsersController, addUserController, updateUserController, deleteUserController } from "../controllers/user.controller.js";
+import { authMiddleware } from "../middlewares/auth.middlewares.js";
 
 const router = express.Router();
 
 // Lấy danh sách user
-router.get("/users", getUsers);
+router.get("/users", authMiddleware,getUsersController);
 
 // Thêm user
-router.post("/users", addUser);
+router.post("/users", authMiddleware, addUserController);
 
 // Cập nhật user
-router.put("/users/:user_id", updateUser);
+router.put("/users/:user_id", authMiddleware, updateUserController);
 
 // Xóa user
-router.delete("/users/:user_id", deleteUser);
+router.delete("/users/:user_id", authMiddleware, deleteUserController);
 
 export default router;

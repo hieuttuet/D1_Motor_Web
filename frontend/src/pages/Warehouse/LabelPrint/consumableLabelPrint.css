@@ -1,0 +1,386 @@
+.label-print-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f9ff, #ebf4ff);
+  color: #000000;
+  padding: 24px 14px;
+}
+
+/* Header chính */
+.label-print-container h1:first-child {
+  color: #183aad;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: start;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.label-print-container h2:first-child {
+  color: #3a57b7;
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  text-align: start;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Các section chung */
+.positions-section,
+.search-section,
+.info-section,
+.quantity-section,
+.button-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.search-section:hover,
+.info-section:hover,
+.quantity-section:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Search Section */
+.search-section {
+  flex: 0.2;
+  display: flex;
+  flex-direction: column;
+  padding:14px 14px;
+  gap: 6px;
+}
+
+.search-section h2 {
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-section h2::before {
+  content: "🔍";
+  font-size: 18px;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-input-group label {
+  font-weight: 600;
+  min-width: 140px;
+  font-size: 18px;
+}
+
+.search-input-group input {
+  flex: 0.21;
+  padding: 12px 16px;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.search-input-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Info Section */
+.info-section {
+  flex: 0.3;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-header h2::before {
+  content: "📋";
+  font-size: 18px;
+}
+
+.basic-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-row {
+  display: flex;
+  gap: 24px;
+}
+
+.info-pair {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex: 1; /* để các cặp đồng đều */
+}
+
+.info-pair label {
+  font-weight: 600;
+  min-width: 140px; /* cố định label width để value thẳng hàng */
+}
+
+.info-value {
+  flex: 0.5; /* width cố định 200px, không giãn */
+  padding: 10px 12px;
+  background: #f7fafc;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.info-value:not(:empty) {
+  background: rgb(219, 217, 217);
+  border-color: #cbd5e0;
+}
+
+.info-value:empty::before {
+  content: "—";
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* Quantity Section */
+.quantity-section {
+  flex: 0.1;
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  gap: 16px;
+}
+
+.quantity-section label {
+  font-weight: 600;
+  font-size: 18px;
+  min-width: 140px;
+}
+
+.quantity-section input {
+  padding: 12px 16px;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 120px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.quantity-section input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Button Section */
+.button-section {
+  flex: 0.1;
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.button-section button {
+  padding: 4px 42px;
+  background: linear-gradient(135deg, #1231bd 0%, #324298 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(102, 126, 234, 0.3);
+}
+
+.button-section button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(102, 126, 234, 0.4);
+}
+
+.button-section button:active {
+  transform: translateY(0);
+}
+
+.button-section button:disabled {
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* Loading state */
+.search-input-group input:disabled {
+  background: #f7fafc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .basic-info-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .label-print-container {
+    padding: 16px;
+  }
+  
+  .basic-info-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .search-input-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .search-input-group input {
+    width: 100%;
+  }
+  
+  .quantity-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .button-section {
+    justify-content: center;
+  }
+  
+  .button-section button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .label-print-container {
+    padding: 12px;
+  }
+  
+  .search-section,
+  .info-section,
+  .quantity-section,
+  .button-section {
+    padding: 16px;
+  }
+  
+  .label-print-container h2:first-child {
+    font-size: 24px;
+  }
+}
+
+/* Positions Section */
+.positions-section {
+  flex: 0.1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /*2 cột bằng nhau */
+  gap: 10px;   /* khoảng cách giữa các cột */
+  padding: 0px 16px;
+}
+
+.position-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.position-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.position-row label {
+  font-weight: 600;
+  min-width: 140px;
+  font-size: 18px;
+}
+
+.position-row input {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  width: 120px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.position-row input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+/* Test Print Section */
+.test-print-section {
+  justify-content: flex-start;
+  padding: 24px;
+  gap: 16px;
+}
+
+.test-print-section button {
+  padding: 4px 32px;
+  background: linear-gradient(135deg, #1882b3 0%, #1882b3 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(72, 187, 120, 0.3);
+}
+
+.test-print-section button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(72, 187, 120, 0.4);
+}
+
+.test-print-section button:active {
+  transform: translateY(0);
+}
+
+.test-print-section button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

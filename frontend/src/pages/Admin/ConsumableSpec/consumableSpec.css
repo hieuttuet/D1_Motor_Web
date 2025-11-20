@@ -1,0 +1,227 @@
+/* ====== TOÀN TRANG ====== */
+.consumable-container {
+  width: 100%;
+  height: calc(100vh - 80px - 45px); /* Trừ header và footer */
+  display: flex;
+  gap: 15px;
+  padding: 15px 15px;
+  background: linear-gradient(135deg, #f6f8fc, #e9eef9);
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+/* ====== DANH SÁCH TRÁI ====== */
+.consumable-list {
+  flex: 2.4;
+  background: white;
+  padding: 8px 8px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+.table-wrapper {
+  border: 1px solid #cdd4e0;
+  border-radius: 8px;
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.consumable-list h2 {
+  text-align: center;
+  color: #004aad;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.consumable-list table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+
+.consumable-list thead {
+  background: #195aaf;
+  color: white;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.consumable-list th,
+.consumable-list td {
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e2e8f0;  /* kẻ ngang */
+  border-right: 1px solid #e2e8f0;   /* kẻ dọc */
+}
+
+
+.consumable-list thead tr,
+.consumable-list tbody tr {
+  display: table-row;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.consumable-list tbody  tr:hover {
+  background: #dbe4ff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.consumable-list tr.selected {
+  background: #8dc0ff87;
+  font-weight: 600;
+}
+/* === CỐ ĐỊNH HEADER === */
+.consumable-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+.consumable-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #195aaf;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 18px;
+  text-align: center;                /* căn giữa header */
+  border-bottom: 2px solid #bfdbfe;
+  border-right: 1px solid #e2e8f0;
+}
+/* ====== FORM PHẢI ====== */
+.consumable-form {
+  flex: 1;
+  background: white;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.consumable-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #004aad;
+  font-weight: 700;
+}
+
+.form-section {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* HÀNG INPUT */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+
+.form-row label {
+  flex: 0 0 150px; /* chiều rộng cố định cho label */
+  font-size: 13px;
+  font-weight: 600;
+  color: #181818;
+}
+
+.form-row input {
+  flex: 1; /* input chiếm phần còn lại */
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+
+.form-row label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.form-row input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.form-row input:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.3);
+}
+
+/* ====== NÚT ====== */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.button-group button {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #4caf50, #43a047);
+}
+.add-btn:hover {
+  transform: scale(1.04);
+  background: linear-gradient(135deg, #66bb6a, #43a047);
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #ffa726, #fb8c00);
+}
+.edit-btn:hover {
+  transform: scale(1.04);
+  background: linear-gradient(135deg, #ffb74d, #fb8c00);
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ef5350, #e53935);
+}
+.delete-btn:hover {
+  transform: scale(1.04);
+  background: linear-gradient(135deg, #f06292, #d32f2f);
+}
+
+/* ====== SCROLLBAR TÙY CHỈNH ====== */
+.consumable-list tbody::-webkit-scrollbar,
+.form-section::-webkit-scrollbar {
+  width: 6px;
+}
+.consumable-list tbody::-webkit-scrollbar-thumb,
+.form-section::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}

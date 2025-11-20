@@ -1,53 +1,66 @@
-// src/controllers/user.controller.js
 import {
-  getAllUsersService,
-  createUserService,
-  updateUserService,
-  deleteUserService
-} from "../services/user.service.js";
+  getAllUsers,
+  createUser,
+  updateUser,
+  deleteUser,
+  findUserByUsername,
+  findUserById,
+} from "../models/user.model.js";
+import { ok, error } from "../middlewares/responseHandler.js";
 
-// 🟢 Lấy danh sách user
-export const getUsers = async (req, res) => {
+// 🔹 Lấy danh sách user (có thể thêm filter, tìm kiếm...)
+export const getUsersController = async (req, res) => {
   try {
-    const users = await getAllUsersService();
-    res.json(users);
+    const users = await getAllUsers();
+    return ok(res, users, "Lấy danh sách user thành công");
   } catch (err) {
-    console.error("❌ Error getting users:", err);
-    res.status(500).json({ error: err.message });
+    return error(res, "Lỗi server", 500);
   }
 };
 
-// 🟡 Thêm user
-export const addUser = async (req, res) => {
-  try {
-    const newUser = await createUserService(req.body);
-    res.status(201).json(newUser);
+// 🔹 Thêm user (kiểm tra trùng tên, mã hóa password,...)
+export const addUserController = async (req,res) => {
+  try { 
+    const userData = req.body;
+  // Kiểm tra trùng username
+  const existingUser = await findUserByUsername(userData.user_name);
+  if (existingUser) {
+    return error(res, "Username đã tồn tại", 401);
+  }
+  const newUser = await createUser(userData);
+  return ok(res, newUser, "Tạo user thành công");
   } catch (err) {
-    console.error("❌ Error creating user:", err);
-    res.status(400).json({ error: err.message });
+    return error(res, "Lỗi server", 500);
   }
 };
 
-// 🟠 Cập nhật user
-export const updateUser = async (req, res) => {
+// 🔹 Cập nhật user
+export const updateUserController = async (req,res) => {
   try {
-    const { user_id } = req.params;
-    await updateUserService(user_id, req.body);
-    res.json({ message: "User updated successfully" });
+    const user_id = req.params.user_id;
+    const userData = req.body;
+    const user = await findUserByUsername(userData.user_name);
+  if (user && user.user_id !== parseInt(user_id)) {
+    return error(res, "Username đã tồn tại", 401);
+  }
+  const updatedUser = await updateUser(user_id, userData);
+  return ok(res, updatedUser, "Cập nhật user thành công");
   } catch (err) {
-    console.error("❌ Error updating user:", err);
-    res.status(400).json({ error: err.message });
+    return error(res, "Lỗi server", 500);
   }
 };
 
-// 🔴 Xóa user
-export const deleteUser = async (req, res) => {
+// 🔹 Xóa user
+export const deleteUserController = async (req,res) => {
   try {
-    const { user_id } = req.params;
-    await deleteUserService(user_id);
-    res.json({ message: "User deleted successfully" });
+    const user_id = req.params.user_id;
+    const user = await findUserById(user_id);
+  if (!user) {
+    return error(res, "User không tồn tại", 401);
+  }
+  await deleteUser(user_id);
+  return ok(res, null, "Xóa user thành công");
   } catch (err) {
-    console.error("❌ Error deleting user:", err);
-    res.status(400).json({ error: err.message });
+    return error(res, "Lỗi server", 500);
   }
 };

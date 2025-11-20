@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import bgHome from "../../assets/icons/bg_home.jpg";
-import "../../styles/home.css";
+import "./home.css";
 
 export default function Home() {
     useEffect(() => {

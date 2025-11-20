@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import "../../styles/sidebar.css";
+import "./sidebar.css";
 import { useState } from "react";
 import { FaChevronRight, FaChevronLeft, FaBars } from "react-icons/fa";
 import { useAuth } from "../../hooks/useAuth.jsx";
@@ -47,28 +47,22 @@ export default function Sidebar({ onToggle }) {
 
               <div className={`submenu-container ${openMenu === "warehouse" ? "open" : ""}`}>
                 <Link
-                  to="/warehouse/labelprint"
-                  className={`submenu-item ${isActive("/warehouse/labelprint") ? "active" : ""}`}
+                  to="/warehouse/consumable-label-print"
+                  className={`submenu-item ${isActive("/warehouse/consumable-label-print") ? "active" : ""}`}
                 >
                   Label Print
                 </Link>
                 <Link
-                  to="/warehouse/consumablein"
-                  className={`submenu-item ${isActive("/warehouse/consumablein") ? "active" : ""}`}
+                  to="/warehouse/consumablemove"
+                  className={`submenu-item ${isActive("/warehouse/consumablemove") ? "active" : ""}`}
                 >
-                  Consumable In
+                  Consumable Move
                 </Link>
                 <Link
-                  to="/warehouse/consumableout"
-                  className={`submenu-item ${isActive("/warehouse/consumableout") ? "active" : ""}`}
+                  to="/warehouse/consumablehistory"
+                  className={`submenu-item ${isActive("/warehouse/consumablehistory") ? "active" : ""}`}
                 >
-                  Consumable Out
-                </Link>
-                <Link
-                  to="/warehouse/consumableter"
-                  className={`submenu-item ${isActive("/warehouse/consumableter") ? "active" : ""}`}
-                >
-                  Consumable Ter
+                  Consumable History
                 </Link>
               </div>
             </div>
@@ -119,7 +113,7 @@ export default function Sidebar({ onToggle }) {
                   </Link>
                   <Link
                     to="/admin/consumable-specs"
-                    className={`submenu-item ${isActive("/admin/consumablespec") ? "active" : ""}`}
+                    className={`submenu-item ${isActive("/admin/consumable-specs") ? "active" : ""}`}
                   >
                     Consumable Spec
                   </Link>

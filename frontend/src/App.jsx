@@ -6,8 +6,9 @@ import Login from "./pages/Login/login.jsx";
 import Layout from "./components/Main/Layout.jsx";
 import Home from "./pages/Home/Home.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
-import AdminUser from "./pages/Admin/UserManagement.jsx";
-import ConsumableSpec from "./pages/Admin/ConsumableSpec.jsx";
+import AdminUser from "./pages/Admin/User/UserManagement.jsx";
+import ConsumableSpec from "./pages/Admin/ConsumableSpec/ConsumableSpec.jsx";
+import ConsumableLabelPrint from "./pages/Warehouse/LabelPrint/ConsumableLabelPrint.jsx";
 
 
 function App() {
@@ -17,9 +18,10 @@ function App() {
         {/* Đường dẫn Login */}
         <Route path="/login" element={<Login />} />
 
-        {/* Đường dẫn Home có bảo vệ */}
+        {/* Đường dẫn Routes có bảo vệ */}
         <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
           <Route path="/home" element={<Home />} />
+          <Route path="/warehouse/consumable-label-print" element={<ConsumableLabelPrint />} />
           <Route path="/admin/users" element={<AdminUser />} />
           <Route path="/admin/consumable-specs" element={<ConsumableSpec />} />
         </Route>

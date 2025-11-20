@@ -2,7 +2,6 @@ import db from "../config/db.js";
 
 //login
 export const findUserByUsername = async (username) => {
-  console.log('Finding user by username:', username);
   const rows = await db.query("SELECT * FROM users WHERE user_name = ?", [username]);
   return rows[0];
 };
@@ -18,7 +17,7 @@ export const getAllUsers = async () => {
 export const createUser = async (userData) => {
   const { user_name, password, full_name, role } = userData;
   const result = await db.query("INSERT INTO users (user_name, password, full_name, role) VALUES (?, ?, ?,?)", [user_name, password, full_name,role]);
-  return { user_id: result.insertId, user_name, role };
+  return result;
 };
 
 export const updateUser = async (user_id, userData) => {

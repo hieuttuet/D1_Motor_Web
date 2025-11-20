@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../api/login/login.js";
 import { useAuth } from "../../hooks/useAuth.jsx";
-import "../../styles/login.css";
+import "./login.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import partronLoginImg from "../../assets/icons/partron_login.png";
 import bgLogin from "../../assets/icons/bg_login.png";
@@ -35,27 +35,27 @@ export default function Login() {
     setLoading(true);
     try {
       const resp = await loginUser({ user_name, password });
+      if (!resp.data.success) {
+        setErrorMsg(resp.data.message || "Đăng nhập thất bại.");
+        return;
+      }
       // Giả sử API trả về { token, user }
-      const { token, user } = resp.data;
+      const { token, user } = resp.data.info;
 
-      // 1) Lưu email nếu remember
+      // 1) Lưu username nếu remember
       if (rememberMe) localStorage.setItem("rememberedUsername", user_name);
       else localStorage.removeItem("rememberedUsername");
 
       // 2) Cập nhật context/auth (ví dụ lưu token trong memory/context)
-      const { password: _, ...userWithoutPassword } = user;
-      login({ user: userWithoutPassword, token });
+      login({ user, token });
 
       // 3) Điều hướng
       navigate("/home");
     } catch (err) {
       if (err.response) {
-        // Lỗi từ server
-        if (err.response.status === 401) setErrorMsg("Sai user name hoặc mật khẩu.");
-        else setErrorMsg(err.response.data?.message || "Lỗi server.");
+      setErrorMsg(err.response.data.message || "Lỗi xác thực!");
       } else {
-        // Lỗi mạng
-        setErrorMsg("Không thể kết nối tới server.");
+      setErrorMsg("Không thể kết nối server.");
       }
     } finally {
       setLoading(false);
