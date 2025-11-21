@@ -7,22 +7,22 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #f5f9ff, #ebf4ff);
   color: #000000;
-  padding: 24px 14px;
+  padding: 14px 14px;
 }
 
 /* Header chính */
 .label-print-container h1:first-child {
   color: #183aad;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
   text-align: start;
   text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .label-print-container h2:first-child {
   color: #3a57b7;
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 500;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   text-align: start;
   text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -61,7 +61,7 @@
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .search-section h2::before {
@@ -78,11 +78,11 @@
 .search-input-group label {
   font-weight: 600;
   min-width: 140px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .search-input-group input {
-  flex: 0.21;
+  flex: 0.1;
   padding: 12px 16px;
   border: 1px solid #c0c0c0;
   border-radius: 8px;
@@ -100,7 +100,7 @@
 
 /* Info Section */
 .info-section {
-  flex: 0.3;
+  flex: 0.25;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -169,7 +169,7 @@
 
 /* Quantity Section */
 .quantity-section {
-  flex: 0.1;
+  flex: 0.07;
   display: flex;
   align-items: center;
   padding: 24px;
@@ -201,17 +201,16 @@
 
 /* Button Section */
 .button-section {
-  flex: 0.1;
+  flex: 0.07;
   display: flex;
   justify-content: flex-end;
-  padding: 24px;
   background: transparent;
   border: none;
   box-shadow: none;
 }
 
 .button-section button {
-  padding: 4px 42px;
+  padding: 4px 22px;
   background: linear-gradient(135deg, #1231bd 0%, #324298 100%);
   color: white;
   border: none;
@@ -331,7 +330,7 @@
 .position-row label {
   font-weight: 600;
   min-width: 140px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .position-row input {
@@ -340,7 +339,7 @@
   border: 1px solid #c0c0c0;
   border-radius: 8px;
   width: 120px;
-  font-size: 18px;
+  font-size: 16px;
   transition: all 0.3s ease;
   background: #fafafa;
 }
@@ -354,18 +353,18 @@
 /* Test Print Section */
 .test-print-section {
   justify-content: flex-start;
-  padding: 24px;
-  gap: 16px;
+  padding: 14px 24px;
+  gap: 6px;
 }
 
 .test-print-section button {
-  padding: 4px 32px;
-  background: linear-gradient(135deg, #1882b3 0%, #1882b3 100%);
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #1231bd 0%, #324298 100%);
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(72, 187, 120, 0.3);
@@ -383,4 +382,46 @@
 .test-print-section button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+/* drop down */
+.dropdown-table {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  width: 450px;
+  max-height: 270px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 2px;
+}
+
+.dropdown-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.dropdown-table th {
+  background: #b3cff8;
+  text-align: left;
+  padding: 6px;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdown-table td {
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  border: #cfcfcf 1px solid;
+}
+
+.dropdown-table tr:hover td {
+  background: #dbeafe;
+}
+/* Giữ header của dropdown cố định khi cuộn */
+.dropdown-table thead th {
+  position: sticky;
+  top: 0;
+  background: #b3cff8;   /* giữ lại màu header */
+  z-index: 10;            /* cao hơn các dòng bên dưới */
 }

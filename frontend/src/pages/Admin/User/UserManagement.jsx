@@ -4,6 +4,7 @@ import UserFormModal from "./UserFormModal.jsx";
 import { getUsers, createUser, updateUser, deleteUser } from "../../../api/admin/userApi.js";
 import "./userManagement.css";
 import { showMessage  } from "../../../components/Notification/messageService.jsx";
+import { useConfirm } from "../../../components/Confirm/confirmService.jsx";
 export default function UserManagement() {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
@@ -11,6 +12,7 @@ export default function UserManagement() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editUser, setEditUser] = useState(null);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' }); // sắp xếp
+  const { confirm, ConfirmUI } = useConfirm();
   useEffect(() => {
   document.title = "Admin Page";
 }, []);
@@ -83,7 +85,7 @@ export default function UserManagement() {
 
   // ✅ Xóa user
   const handleDelete = async (user_id) => {
-    if (confirm("Bạn có chắc chắn muốn xóa người dùng này?")) {
+    if (await confirm("Bạn có chắc chắn muốn xóa người dùng này?")) {
       try {
         const res = await deleteUser(user_id);
         await showMessage(res.data.message, "success");
@@ -113,6 +115,8 @@ export default function UserManagement() {
   setUsers(sorted);
 };
   return (
+    <>
+    {ConfirmUI}
     <div className="user-container">
       <div className="user-header">
         <h2>Quản lý người dùng</h2>
@@ -172,5 +176,6 @@ export default function UserManagement() {
         />
       )}
     </div>
+    </>
   );
 }

@@ -1,0 +1,94 @@
+# =========================================================
+# Node / Backend
+# =========================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Production build
+dist/
+build/
+dist-ssr/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local environment configs
+*.local
+
+# PM2 logs
+.pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+
+# =========================================================
+# Vite / React Frontend
+# =========================================================
+.vite/
+vite.config.js.timestamp*
+coverage/
+
+# Local dev cache
+.cache/
+.parcel-cache/
+eslintcache
+
+# =========================================================
+# OS / Editor
+# =========================================================
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# JetBrains IDEs (WebStorm, IntelliJ)
+.idea/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# =========================================================
+# Uploads / Generated files
+# =========================================================
+uploads/
+public/uploads/
+
+# =========================================================
+# Database / Dump files
+# =========================================================
+*.sql
+*.sql.gz
+*.sqlite
+*.db
+
+# =========================================================
+# Others
+# =========================================================
+*.swp
+*.swo
+*.swn
+*.sw?
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
