@@ -1,10 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css";
 import { useState } from "react";
+import partronHome from "../../assets/icons/partron_home.png";
 import { FaChevronRight, FaChevronLeft, FaBars } from "react-icons/fa";
 import { useAuth } from "../../hooks/useAuth.jsx";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar({ onToggle }) {
+  const { t } = useTranslation();
   const location = useLocation();
   const [openMenu, setOpenMenu] = useState("");
   const [collapsed, setCollapsed] = useState(false);
@@ -31,7 +34,7 @@ export default function Sidebar({ onToggle }) {
       {!collapsed && (
         <>
           <div className="sidebar-logo">
-            <Link to="/home">PARTRON</Link>
+            <Link to="/home" className="logo-link"><img src={partronHome} alt="Logo" /></Link>
           </div>
 
           <nav className="sidebar-menu">
@@ -41,7 +44,7 @@ export default function Sidebar({ onToggle }) {
                 className={`menu-title ${openMenu === "warehouse" ? "open" : ""}`}
                 onClick={() => toggleMenu("warehouse")}
               >
-                <span>Warehouse</span>
+                <span>{t("sidebar.warehouses")}</span>
                 <FaChevronRight className="arrow" />
               </div>
 
@@ -50,45 +53,19 @@ export default function Sidebar({ onToggle }) {
                   to="/warehouse/consumable-label-print"
                   className={`submenu-item ${isActive("/warehouse/consumable-label-print") ? "active" : ""}`}
                 >
-                  Label Print
+                  {t("sidebar.warehouses_label_print")}
                 </Link>
                 <Link
                   to="/warehouse/consumablemove"
                   className={`submenu-item ${isActive("/warehouse/consumablemove") ? "active" : ""}`}
                 >
-                  Consumable Move
+                  {t("sidebar.warehouses_move")}
                 </Link>
                 <Link
                   to="/warehouse/consumablehistory"
                   className={`submenu-item ${isActive("/warehouse/consumablehistory") ? "active" : ""}`}
                 >
-                  Consumable History
-                </Link>
-              </div>
-            </div>
-
-            {/* === MACHINE === */}
-            <div className="menu-section">
-              <div
-                className={`menu-title ${openMenu === "machine" ? "open" : ""}`}
-                onClick={() => toggleMenu("machine")}
-              >
-                <span>Machine</span>
-                <FaChevronRight className="arrow" />
-              </div>
-
-              <div className={`submenu-container ${openMenu === "machine" ? "open" : ""}`}>
-                <Link
-                  to="/machine/machinein"
-                  className={`submenu-item ${isActive("/machine/machinein") ? "active" : ""}`}
-                >
-                  Machine In
-                </Link>
-                <Link
-                  to="/machine/machineout"
-                  className={`submenu-item ${isActive("/machine/machineout") ? "active" : ""}`}
-                >
-                  Machine Out
+                  {t("sidebar.warehouses_history")}
                 </Link>
               </div>
             </div>
@@ -100,7 +77,7 @@ export default function Sidebar({ onToggle }) {
                   className={`menu-title ${openMenu === "admin" ? "open" : ""}`}
                   onClick={() => toggleMenu("admin")}
                 >
-                  <span>Admin</span>
+                  <span>{t("sidebar.admin")}</span>
                   <FaChevronRight className="arrow" />
                 </div>
 
@@ -109,13 +86,13 @@ export default function Sidebar({ onToggle }) {
                     to="/admin/users"
                     className={`submenu-item ${isActive("/admin/users") ? "active" : ""}`}
                   >
-                    User
+                    {t("sidebar.admin_users")}
                   </Link>
                   <Link
                     to="/admin/consumable-specs"
                     className={`submenu-item ${isActive("/admin/consumable-specs") ? "active" : ""}`}
                   >
-                    Consumable Spec
+                    {t("sidebar.admin_consumable_specs")}
                   </Link>
                 </div>
               </div>

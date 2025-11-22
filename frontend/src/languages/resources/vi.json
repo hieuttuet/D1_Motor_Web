@@ -1,0 +1,55 @@
+{
+  "language": {
+    "en": "Tiếng Anh",
+    "vi": "Tiếng Việt",
+    "ko": "Tiếng Hàn"
+  },
+  "login": {
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "sign_in": "Đăng nhập",
+    "signing_in": "Đang đăng nhập...",
+    "show_password": "Hiện mật khẩu",
+    "hide_password": "Khóa mật khẩu",
+    "remember_me": "Lưu tài khoản"
+  },
+  "error": {
+    "INVALID_PASSWORD": "Sai mật khẩu.",
+    "USER_NOT_FOUND": "Không tìm thấy người dùng.",
+    "SERVER_ERROR": "Lỗi server."
+  },
+  "sidebar": {
+    "warehouses": "Kho NVL",
+    "warehouses_label_print": "In Label",
+    "warehouses_move": "Di chuyển NVL",
+    "warehouses_history": "Lịch sử kho",
+    "admin": "Quản trị",
+    "admin_users": "Người dùng",
+    "admin_consumable_specs": "TTTC NVL"
+  },
+  "admin-users": {
+    "header": "Quản lý người dùng",
+    "search-placeholder":" Tìm kiếm theo tên đăng nhập",
+    "btn-add":"Thêm người dùng",
+    "table": {
+      "username":"Tên đăng nhập",
+      "full_name":"Họ và tên",
+      "role":"Vai trò",
+      "actions":"Hành động"
+    },
+    "role":{
+      "admin":"Quản trị",
+      "user":"Người dùng"
+    },
+    "modal": {
+      "title-add":"Thêm người dùng",
+      "title-edit":"Chỉnh sửa người dùng",
+      "label-username":"Tên đăng nhập :",
+      "label-full_name":"Họ và tên :",
+      "label-password":"Mật khẩu :",
+      "label-role":"Vai trò :",
+      "btn-save":"Lưu",
+      "btn-cancel":"Hủy"
+    }
+  }
+}

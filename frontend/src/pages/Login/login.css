@@ -30,11 +30,12 @@ html, body {
    LOGIN BOX
 ========================== */
 .login-box {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255, 255, 255);
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   padding: 3rem;
   width: 460px;
+  position: relative;
   backdrop-filter: blur(10px);
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -49,7 +50,14 @@ html, body {
     transform: translateY(0);
   }
 }
-
+/* ==========================
+   LANGUAGE SWITCHER
+========================== */
+.login-language {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
 /* ==========================
    FORM TITLE / LOGO
 ========================== */

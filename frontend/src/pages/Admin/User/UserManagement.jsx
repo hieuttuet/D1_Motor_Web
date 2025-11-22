@@ -3,9 +3,11 @@ import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import UserFormModal from "./UserFormModal.jsx";
 import { getUsers, createUser, updateUser, deleteUser } from "../../../api/admin/userApi.js";
 import "./userManagement.css";
+import { useTranslation } from "react-i18next";
 import { showMessage  } from "../../../components/Notification/messageService.jsx";
 import { useConfirm } from "../../../components/Confirm/confirmService.jsx";
 export default function UserManagement() {
+  const { t } = useTranslation();
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -119,16 +121,16 @@ export default function UserManagement() {
     {ConfirmUI}
     <div className="user-container">
       <div className="user-header">
-        <h2>Quản lý người dùng</h2>
+        <h2>{t("admin-users.header")}</h2>
         <div className="user-actions">
           <input
             type="text"
-            placeholder="Tìm kiếm theo tên..."
+            placeholder={t("admin-users.search-placeholder")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <button className="btn-add" onClick={() => setModalOpen(true)}>
-            <FaPlus /> Thêm người dùng
+            <FaPlus /> {t("admin-users.btn-add")}
           </button>
         </div>
       </div>
@@ -137,11 +139,11 @@ export default function UserManagement() {
         <table className="user-table">
         <thead>
           <tr>
-            <th onClick={() => handleSort("user_name")}>User Name</th>
-            <th onClick={() => handleSort("password")}>Password</th>
-            <th onClick={() => handleSort("full_name")}>Full Name</th>
-            <th onClick={() => handleSort("role")}>Role</th>
-            <th>Actions</th>
+            <th onClick={() => handleSort("user_name")}>{t("admin-users.table.username")}</th>
+            <th onClick={() => handleSort("password")}>{t("admin-users.table.password")}</th>
+            <th onClick={() => handleSort("full_name")}>{t("admin-users.table.full_name")}</th>
+            <th onClick={() => handleSort("role")}>{t("admin-users.table.role")}</th>
+            <th>{t("admin-users.table.actions")}</th>
           </tr>
         </thead>
         <tbody>

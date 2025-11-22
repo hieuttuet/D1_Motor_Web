@@ -186,7 +186,6 @@
         {/* === FORM PHẢI === */}
         <div className="consumable-form">
           <h2>Thông tin chi tiết</h2>
-
           <div className="form-section">
             <div className="form-row">
               <label>Consumable Code :</label>

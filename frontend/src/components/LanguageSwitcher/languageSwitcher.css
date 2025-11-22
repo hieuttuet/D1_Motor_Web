@@ -1,0 +1,47 @@
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.current-lang img {
+  width: 30px;
+  height: 25px;
+  border: 1px solid #d1d1d1;
+  transition: transform 0.2s;
+}
+
+.current-lang img:hover {
+  transform: scale(1.1);
+}
+
+.lang-menu {
+  position: absolute;
+  top: -15px;  
+  left: 150%;    
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 1000;
+  min-width: 140px;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  gap: 8px;
+  transition: all 0.2s;
+  border: rgba(0,0,0,0.1) 0.5px solid  ;
+}
+
+.lang-item:hover {
+  background: #c2c4c4;
+}
+
+.lang-item img {
+  width: 20px;
+  height: 20px;
+}
+

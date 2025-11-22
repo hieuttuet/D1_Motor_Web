@@ -7,6 +7,9 @@ import "./login.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import partronLoginImg from "../../assets/icons/partron_login.png";
 import bgLogin from "../../assets/icons/bg_login.png";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher.jsx";
+
 
 export default function Login() {
   const [user_name, setUsername] = useState("");
@@ -17,6 +20,7 @@ export default function Login() {
   const [errorMsg, setErrorMsg] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
   document.title = "Login Page";
@@ -64,6 +68,10 @@ export default function Login() {
   return (
     <div className="login-background" style={{ backgroundImage: `url(${bgLogin})` }}>
         <div className="login-box">
+          {/* Ngôn ngữ */}
+          <div className="login-language">
+            <LanguageSwitcher />
+          </div>
           <form className="login-form" onSubmit={handleLogin}>
             <img src={partronLoginImg} alt="Member login" className="login-title" />
 
@@ -74,7 +82,7 @@ export default function Login() {
                 value={user_name}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                placeholder="Username"
+                placeholder={t("login.username")}
               />
             </div>
 
@@ -85,13 +93,13 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder="Password"
+                placeholder={t("login.password")}
               />
               <span
                 className="icon"
                 style={{ cursor: "pointer", marginLeft: 8 }}
                 onClick={() => setShowPassword((prev) => !prev)}
-                title={showPassword ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
+                title={showPassword ? t("login.hide_password") : t("login.show_password")}
               >
                 {showPassword ?  <FaEyeSlash /> : <FaEye />}
               </span>
@@ -103,11 +111,11 @@ export default function Login() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                /> Save User
+                /> {t("login.remember_me")}
               </label>
             </div>
             <button type="submit" disabled={loading}>
-              {loading ? "Signing in..." : "Sign in"}
+              {loading ? t("login.signing_in") : t("login.sign_in")}
             </button>
             {errorMsg && <div className="error">{errorMsg}</div>}
           </form>

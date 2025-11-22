@@ -1,0 +1,55 @@
+{
+    "language": {
+        "en": "영어",
+        "vn": "베트남어",
+        "ko": "한국어"
+    },
+    "login": {
+        "username": "사용자 이름",
+        "password": "비밀번호",
+        "sign_in": "로그인",
+        "signing_in": "로그인 중...",
+        "show_password": "비밀번호 보기",
+        "hide_password": "비밀번호 가리기",
+        "remember_me": "사용자 정보 저장"
+    },
+    "error": {
+        "INVALID_PASSWORD": "비밀번호이 죽어요.",
+        "USER_NOT_FOUND": "사용자가 없어요.",
+        "SERVER_ERROR": "서버에러."    
+    },
+    "sidebar": {
+        "warehouses": "창고",
+        "warehouses_label_print": "라벨 발행",
+        "warehouses_move": "창고 이동",
+        "warehouses_history": "창고 이력",
+        "admin": "관리자",
+        "admin_users": "사용자",
+        "admin_consumable_specs": "자재 정보 등록"
+    },
+    "admin-users": {
+        "header": "사용자 관리",
+        "search-placeholder":" 사용자 이름으로 검색",
+        "btn-add":"사용자 추가",
+        "table": {
+            "username":"사용자 이름",
+            "full_name":"이름",
+            "role":"역할",
+            "actions":"액션"
+        },
+        "role":{
+            "admin":"관리자",
+            "user":"사용자"
+        },
+        "modal": {
+            "title-add":"사용자 추가",
+            "title-edit":"사용자 수정",
+            "label-username":"사용자 이름 :",
+            "label-full_name":"이름 :",
+            "label-password":"비밀번호 :",
+            "label-role":"역할 :",
+            "btn-save":"저장",
+            "btn-cancel":"취소"
+        }
+    }
+}

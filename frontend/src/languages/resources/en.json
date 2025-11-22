@@ -1,0 +1,56 @@
+{
+  "language": {
+    "en": "English",
+    "vi": "Vietnamese",
+    "ko": "Korean"
+  },
+  "login": {
+    "username": "Username",
+    "password": "Password",
+    "sign_in": "Sign In",
+    "signing_in": "Signing in...",
+    "show_password": "Show Password",
+    "hide_password": "Hide Password",
+    "remember_me": "Remember Me"
+  },
+  "error": {
+    "INVALID_PASSWORD": "Incorrect password.",
+    "USER_NOT_FOUND": "User not found.",
+    "SERVER_ERROR": "Server error."
+  },
+  "sidebar": {
+    "warehouses": "Warehouses",
+    "warehouses_label_print": "Print Label",
+    "warehouses_move": "Consumable Move",
+    "warehouses_history": "History",
+    "admin": "Admin",
+    "admin_users": "Users",
+    "admin_consumable_specs": "Consumable Specs"
+  },
+  "admin-users": {
+    "header": "User Management",
+    "search-placeholder":" Search by username",
+    "btn-add":"Add User",
+    "table": {
+      "username":"Username",
+      "password":"Password",
+      "full_name":"Full Name",
+      "role":"Role",
+      "actions":"Actions"
+    },
+    "role":{
+      "admin":"Admin",
+      "user":"User"
+    },
+    "modal": {
+      "title-add":"Add User",
+      "title-edit":"Edit User",
+      "label-username":"User Name :",
+      "label-full_name":"Full Name :",
+      "label-password":"Password :",
+      "label-role":"Role :",
+      "btn-save":"Save",
+      "btn-cancel":"Cancel"
+    }
+  }
+}

@@ -15,14 +15,6 @@ export default function Header() {
         <div className="logo-box">
           <img src="/partron_icon.ico" alt="logo" className="logo" />
         </div>
-
-        <div className="search-box">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="search-input"
-          />
-        </div>
       </div>
 
       <div className="header-right">

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./userManagement.css";
 
 export default function UserFormModal({ onClose, onSave, editUser }) {
+  const { t } = useTranslation();
   const [form, setForm] = useState({
     user_name: "",
     password: "",
@@ -26,40 +28,46 @@ export default function UserFormModal({ onClose, onSave, editUser }) {
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <h3>{editUser ? "Sửa người dùng" : "Thêm người dùng"}</h3>
+        <h3>{editUser ? t("admin-users.modal.title-edit") : t("admin-users.modal.title-add")}</h3>
         <form onSubmit={handleSubmit}>
-          <label>User Name</label>
-          <input
-            name="user_name"
-            value={form.user_name}
-            onChange={handleChange}
-            required
-          />
-
-          <label>Mật khẩu</label>
-          <input
-            name="password"
-            type="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-          <label>Full Name</label>
-          <input
-            name="full_name"
-            value={form.full_name}
-            onChange={handleChange}
-            required
-          />
-          <label>Role</label>
-          <select name="role" value={form.role} onChange={handleChange}>
-            <option>Manager</option>
-            <option>Staff</option>
-          </select>
-
+          <div className="modal-line">
+            <label>{t("admin-users.modal.label-username")}</label>
+            <input
+              name="user_name"
+              value={form.user_name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="modal-line">
+            <label>{t("admin-users.modal.label-password")}</label>
+            <input
+              name="password"
+              type="password"
+              value={form.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="modal-line">
+            <label>{t("admin-users.modal.label-full_name")}</label>
+            <input
+              name="full_name"
+              value={form.full_name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="modal-line">
+            <label>{t("admin-users.modal.label-role")}</label>
+            <select name="role" value={form.role} onChange={handleChange}>
+              <option>Manager</option>
+              <option>Staff</option>
+            </select>
+          </div>
           <div className="modal-buttons">
-            <button type="submit" className="btn-save">Lưu</button>
-            <button type="button" className="btn-cancel" onClick={onClose}>Hủy</button>
+            <button type="submit" className="btn-save">{t("admin-users.modal.button-save")}</button>
+            <button type="button" className="btn-cancel" onClick={onClose}>{t("admin-users.modal.button-cancel")}</button>
           </div>
         </form>
       </div>
