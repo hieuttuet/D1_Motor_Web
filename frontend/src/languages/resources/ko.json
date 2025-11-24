@@ -21,7 +21,7 @@
     "sidebar": {
         "warehouses": "창고",
         "warehouses_label_print": "라벨 발행",
-        "warehouses_move": "창고 이동",
+        "warehouses_move": "자재 이동",
         "warehouses_history": "창고 이력",
         "admin": "관리자",
         "admin_users": "사용자",
