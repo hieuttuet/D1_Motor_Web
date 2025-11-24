@@ -13,6 +13,10 @@ pm2-service-install -n D1_Motor_Web
 B4: Install ở thư mục backend  
 npm install
 
+B5: Buil Dist ở thư mục frontend  
+npm install  
+npm run build
+
 B5:Start ứng dụng NodeJS với PM2  
 cd C:\it\D1_Motor_Web\backend
 pm2 start server.js --name D1_Motor_Web
