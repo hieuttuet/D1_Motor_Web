@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import app from "./app.js";
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 8000;
 
 // Phục vụ các file tĩnh từ React build
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
+console.log("Dist exists:", fs.existsSync(path.join(__dirname, "../frontend/dist/index.html")));
 
 // Fallback: tất cả request không khớp /api/... sẽ trả về index.html
 app.use((req, res, next) => {
