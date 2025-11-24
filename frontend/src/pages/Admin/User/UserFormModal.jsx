@@ -66,8 +66,8 @@ export default function UserFormModal({ onClose, onSave, editUser }) {
             </select>
           </div>
           <div className="modal-buttons">
-            <button type="submit" className="btn-save">{t("admin-users.modal.button-save")}</button>
-            <button type="button" className="btn-cancel" onClick={onClose}>{t("admin-users.modal.button-cancel")}</button>
+            <button type="submit" className="btn-save">{t("admin-users.modal.btn-save")}</button>
+            <button type="button" className="btn-cancel" onClick={onClose}>{t("admin-users.modal.btn-cancel")}</button>
           </div>
         </form>
       </div>

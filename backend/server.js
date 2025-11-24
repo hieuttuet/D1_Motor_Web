@@ -1,7 +1,22 @@
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import app from "./app.js";
 import dotenv from "dotenv";
 dotenv.config();
-console.log('PORT in process.env =', process.env.PORT);
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 8000;
+
+// Phục vụ các file tĩnh từ React build
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+// Fallback: tất cả request không khớp /api/... sẽ trả về index.html
+app.use((req, res, next) => {
+  if (req.path.startsWith("/api")) return next(); // bỏ qua các route API
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
+
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
