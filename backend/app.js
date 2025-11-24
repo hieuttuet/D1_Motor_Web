@@ -24,6 +24,6 @@ app.use("/api", consumableSpecsRoutes);
 app.use("/api", consumablePrintRoutes);  
 
 
-app.get("/", (req, res) => res.send("Backend running 🚀"));
+// app.get("/", (req, res) => res.send("Backend running 🚀"));
 
 export default app;
