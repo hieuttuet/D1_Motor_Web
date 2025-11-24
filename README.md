@@ -10,22 +10,24 @@ npm install -g pm2 pm2-windows-service
 B3: Tạo Windows Service chạy PM2  
 pm2-service-install -n D1_Motor_Web  
 
-B4: Install ở thư mục backend  
+B4: Buil Dist ở thư mục frontend (không nên clone trên git)   
+npm install  
+npm run build  
+
+B5: Install dependencies ở thư mục backend  
 npm install
 
-B5: Buil Dist ở thư mục frontend  
-npm install  
-npm run build
+B6:Start ứng dụng NodeJS với PM2  
+cd C:\it\D1_Motor_Web\backend  
+tạo thư mục pm2_home  
+pm2 start server.js --name D1_Motor_Web  
+nhập đường dẫn đến thư mục pm2_home     
+pm2 save  
 
-B5:Start ứng dụng NodeJS với PM2  
-cd C:\it\D1_Motor_Web\backend
-pm2 start server.js --name D1_Motor_Web
-pm2 save
-
-B6: Mở port Windows Firewall (nếu cần truy cập LAN)  
+B7: Mở port Windows Firewall (nếu cần truy cập LAN)  
 netsh advfirewall firewall add rule name="NodeJS 8000" dir=in action=allow protocol=TCP localport=8000  
 
-B7: Quản lý service   
+Note: Quản lý service   
 net start D1_Motor_Web
 net stop D1_Motor_Web
 pm2 logs D1_Motor_Web
