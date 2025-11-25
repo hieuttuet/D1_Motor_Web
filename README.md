@@ -7,7 +7,7 @@ B2: Cài PM2 + PM2 WINDOWN SERVICE bằng lệnh:
 npm install pm2 -g  
 npm install -g pm2 pm2-windows-service  
 
-B3: Tạo Windows Service chạy PM2  
+B3: Tạo Windows Service chạy PM2 (chạy với quyền admin)  
 pm2-service-install -n D1_Motor_Web  
 
 B4: Buil Dist ở thư mục frontend (không nên clone trên git)   
@@ -17,7 +17,7 @@ npm run build
 B5: Install dependencies ở thư mục backend  
 npm install
 
-B6:Start ứng dụng NodeJS với PM2  
+B6:Start ứng dụng NodeJS với PM2 (chạy ở folder backend và quyền admin)  
 cd C:\it\D1_Motor_Web\backend  
 tạo thư mục pm2_home  
 pm2 start server.js --name D1_Motor_Web  
