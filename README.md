@@ -1,4 +1,4 @@
-B1:Cài Node.js    
+B1:Cài Node.js và Mariadb     
 Sau đó kiểm tra bằng cmd:    
 node -v    
 npm -v    
@@ -7,7 +7,9 @@ B2: Cài PM2 + PM2 WINDOWN SERVICE bằng lệnh:
 npm install pm2 -g  
 npm install -g pm2 pm2-windows-service  
 
-B3: Tạo Windows Service chạy PM2 (chạy với quyền admin)  
+B3: Clone dự án trên git(nhớ copy file .env)
+
+B3: Tạo Windows Service chạy PM2 ( CMD chạy với quyền admin ở bất kỳ đâu)  
 pm2-service-install -n D1_Motor_Web  
 
 B4: Buil Dist ở thư mục frontend (không nên clone trên git)   
@@ -31,6 +33,8 @@ Note: Quản lý service
 net start D1_Motor_Web
 net stop D1_Motor_Web
 pm2 logs D1_Motor_Web
+
+
 
 
 
