@@ -13,6 +13,13 @@
         "hide_password": "비밀번호 가리기",
         "remember_me": "사용자 정보 저장"
     },
+    "modal": {
+        "title-add": "추가",
+        "title-edit": "수정",
+        "title-confirm": "확인",
+        "btn-confirm": "확인",
+        "btn-cancel": "취소"
+    },
     "error": {
         "INVALID_PASSWORD": "비밀번호이 죽어요.",
         "USER_NOT_FOUND": "사용자가 없어요.",

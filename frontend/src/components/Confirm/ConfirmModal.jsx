@@ -3,8 +3,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./confirmModal.css";
 import { FaExclamationCircle } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
-export default function ConfirmModal({ show, title = "Thông báo", message, onConfirm, onCancel }) {
+export default function ConfirmModal({ show, message, onConfirm, onCancel }) {
+  const { t } = useTranslation();
   if (!show) return null;
 
   return ReactDOM.createPortal(
@@ -12,7 +14,7 @@ export default function ConfirmModal({ show, title = "Thông báo", message, onC
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <FaExclamationCircle className="modal-icon" />
-          <div className="modal-title">{title}</div>
+          <div className="modal-title">{t("modal.title-confirm")}</div>
         </div>
 
         <div className="modal-message">{message}</div>

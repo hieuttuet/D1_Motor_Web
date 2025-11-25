@@ -13,6 +13,13 @@
     "hide_password": "Hide Password",
     "remember_me": "Remember Me"
   },
+  "modal": {
+    "title-add": "Add",
+    "title-edit": "Edit",
+    "title-confirm": "Confirm",
+    "btn-confirm": "Confirm",
+    "btn-cancel": "Cancel"
+  },
   "error": {
     "INVALID_PASSWORD": "Incorrect password.",
     "USER_NOT_FOUND": "User not found.",
