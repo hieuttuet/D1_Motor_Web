@@ -20,8 +20,8 @@ export default function ConfirmModal({ show, message, onConfirm, onCancel }) {
         <div className="modal-message">{message}</div>
 
         <div className="modal-buttons">
-          <button className="btn-ok" onClick={onConfirm}>{t("modal.button-ok")}</button>
-          <button className="btn-cancel" onClick={onCancel}>{t("modal.button-cancel")}</button>
+          <button className="btn-ok" onClick={onConfirm}>{t("modal.btn-confirm")}</button>
+          <button className="btn-cancel" onClick={onCancel}>{t("modal.btn-cancel")}</button>
         </div>
       </div>
     </div>,

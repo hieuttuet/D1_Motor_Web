@@ -6,9 +6,13 @@
     updateConsumable,
     deleteConsumable,
   } from "../../../api/admin/consumableApi.js";
+  import { useTranslation } from "react-i18next";
   import { showMessage  } from "../../../components/Notification/messageService.jsx";
+  import { useConfirm } from "../../../components/Confirm/confirmService.jsx";
 
   export default function ConsumableSpec() {
+    const { t } = useTranslation();
+    const { confirm, ConfirmUI } = useConfirm();
     const [consumables, setConsumables] = useState([]);
     const [selected, setSelected] = useState(null);
     const [form, setForm] = useState({
@@ -57,7 +61,7 @@
 
     const handleAdd = async () => {
       if (!form.consumable_code || !form.consumable_type || !form.description || !form.expiration) {
-        alert("⚠️ Vui lòng nhập đầy đủ thông tin!");
+        await showMessage("⚠️ Vui lòng nhập đầy đủ thông tin!", "warning");
         return;
       }
       try {
@@ -79,7 +83,8 @@
     };
 
     const handleEdit = async () => {
-      if (!selected) return alert("⚠️ Chọn 1 item để sửa!");
+      if (!selected)
+         return await showMessage("⚠️ Chọn 1 item để sửa!", "warning");
       try {
         const res = await updateConsumable(form);
         if(!res.data.success) {
@@ -99,9 +104,11 @@
     };
 
     const handleDelete = async () => {
-      if (!selected) return alert("⚠️ Chọn 1 item để xóa!");
-      if (!window.confirm("🗑 Bạn có chắc muốn xóa item này?")) return;
-      try {
+      if (!selected)
+         return await showMessage("⚠️ Chọn 1 item để xóa!", "warning");
+      if (await confirm("🗑 Bạn có chắc muốn xóa item này?"))
+      {
+        try {
         const res = await deleteConsumable(selected.consumable_spec_id);
         if (!res.data.success) {
           await showMessage(res.data.message, "error");
@@ -110,11 +117,12 @@
         await fetchData();
         resetForm();
         await showMessage(res.data.message, "success");
-      } catch (err) {
-        if (err.response) {
-        showMessage(err.response.data.message ,"error");
-        } else {
-        showMessage("Không thể kết nối server.", "error");
+        } catch (err) {
+          if (err.response) {
+          showMessage(err.response.data.message ,"error");
+          } else {
+          showMessage("Không thể kết nối server.", "error");
+          }
         }
       }
     };
@@ -147,18 +155,20 @@
   
     // ====== RENDER ======
     return (
+      <>
+      {ConfirmUI}
       <div className="consumable-container">
         {/* === DANH SÁCH TRÁI === */}
         <div className="consumable-list">
-          <h2>Danh sách Consumable</h2>
+          <h2>{t("admin-consumable-specs.header_left")}</h2>
           <div className="table-wrapper">
             <table className="consumable-table">
             <thead>
               <tr>
-                <th onClick={() => handleSort("consumable_code")}>Consumable Code</th>
-                <th onClick={() => handleSort("consumable_type")}>Consumable Type</th>
-                <th onClick={() => handleSort("description")}>Description</th>
-                <th onClick={() => handleSort("expiration")}>Expiration</th>
+                <th onClick={() => handleSort("consumable_code")}>{t("admin-consumable-specs.table.consumable_code")}</th>
+                <th onClick={() => handleSort("consumable_type")}>{t("admin-consumable-specs.table.consumable_type")}</th>
+                <th onClick={() => handleSort("description")}>{t("admin-consumable-specs.table.description")}</th>
+                <th onClick={() => handleSort("expiration")}>{t("admin-consumable-specs.table.expiration")}</th>
               </tr>
             </thead>
             <tbody>
@@ -185,41 +195,38 @@
 
         {/* === FORM PHẢI === */}
         <div className="consumable-form">
-          <h2>Thông tin chi tiết</h2>
+          <h2>{t("admin-consumable-specs.header_right")}</h2>
           <div className="form-section">
             <div className="form-row">
-              <label>Consumable Code :</label>
+              <label>{t("admin-consumable-specs.table.consumable_code")} :</label>
               <input
                 name="consumable_code"
                 value={form.consumable_code}
                 onChange={handleChange}
-                placeholder="VD: CNSM001"
               />
 
             </div>
 
             <div className="form-row">
-              <label>Consumable Type :</label>
+              <label>{t("admin-consumable-specs.table.consumable_type")} :</label>
               <input
                 name="consumable_type"
                 value={form.consumable_type}
                 onChange={handleChange}
-                placeholder="VD: Tape, Paste..."
               />
             </div>
 
             <div className="form-row">
-              <label>Description :</label>
+              <label>{t("admin-consumable-specs.table.description")} :</label>
               <input
                 name="description"
                 value={form.description}
                 onChange={handleChange}
-                placeholder="Mô tả chi tiết"
               />
             </div>
 
             <div className="form-row">
-              <label>Expiration :</label>
+              <label>{t("admin-consumable-specs.table.expiration")} :</label>
               <input
                 name="expiration"
                 type="number"
@@ -229,7 +236,6 @@
                   const value = e.target.value.replace(/\D/g, "");
                   setForm((prev) => ({ ...prev, expiration: value }));
                 }}
-                placeholder="VD: 12"
               />
             </div>
           </div>
@@ -237,16 +243,17 @@
           {/* Nút hành động */}
           <div className="button-group">
             <button className="add-btn" onClick={handleAdd}>
-              ➕ Add
+              ➕ {t("admin-consumable-specs.btn-add")}
             </button>
             <button className="edit-btn" onClick={handleEdit}>
-              ✏️ Edit
+              ✏️ {t("admin-consumable-specs.btn-edit")}
             </button>
             <button className="delete-btn" onClick={handleDelete} >
-              🗑 Delete
+              🗑 {t("admin-consumable-specs.btn-delete")}
             </button>
           </div>
         </div>
       </div>
+      </>
     );
   }

@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 import AdminUser from "./pages/Admin/User/UserManagement.jsx";
 import ConsumableSpec from "./pages/Admin/ConsumableSpec/ConsumableSpec.jsx";
 import ConsumableLabelPrint from "./pages/Warehouse/LabelPrint/ConsumableLabelPrint.jsx";
+import InventoryHistory from "./pages/Warehouse/History/InventoryHistory.jsx";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
           <Route path="/home" element={<Home />} />
           <Route path="/warehouse/consumable-label-print" element={<ConsumableLabelPrint />} />
+          <Route path="/warehouse/inventory-history" element={<InventoryHistory />} />
           <Route path="/admin/users" element={<AdminUser />} />
           <Route path="/admin/consumable-specs" element={<ConsumableSpec />} />
         </Route>

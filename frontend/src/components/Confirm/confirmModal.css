@@ -24,7 +24,7 @@
 .modal-header {
   display: flex;
   align-items: center;
-  background: #0264ce;
+  background: #2e639b;
   color: white;
   padding: 12px 16px;
   position: relative;
@@ -37,9 +37,9 @@
 
 .modal-title {
   flex: 1;
-  text-align: center;
-  font-weight: 600;
-  font-size: 16px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .modal-message {
@@ -71,7 +71,7 @@
 
 .btn-ok {
   padding: 6px 14px;
-  background: #007bff;
+  background: #0273ec;
   border: none;
   border-radius: 4px;
   color: white;
@@ -79,7 +79,7 @@
   font-weight: 500;
 }
 .btn-ok:hover {
-  background: #0069d9;
+  background: #0257b3;
 }
 
 @keyframes fadeIn {

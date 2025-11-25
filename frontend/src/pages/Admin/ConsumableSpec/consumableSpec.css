@@ -182,7 +182,7 @@
 .button-group button {
   flex: 1;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 10px 0;
   color: white;
   font-weight: 600;
@@ -191,28 +191,34 @@
   transition: 0.25s;
 }
 
+/* ====== ADD BUTTON ====== */
 .add-btn {
-  background: linear-gradient(135deg, #4caf50, #43a047);
+  background: #4caf50;          /* màu flat, hiện đại */
 }
 .add-btn:hover {
-  transform: scale(1.04);
-  background: linear-gradient(135deg, #66bb6a, #43a047);
+  background: #43a047;
+  transform: translateY(-1px) scale(1); /* nổi nhẹ */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
+/* ====== EDIT BUTTON ====== */
 .edit-btn {
-  background: linear-gradient(135deg, #ffa726, #fb8c00);
+  background: #ffa726;
 }
 .edit-btn:hover {
-  transform: scale(1.04);
-  background: linear-gradient(135deg, #ffb74d, #fb8c00);
+  background: #fb8c00;
+  transform: translateY(-1px) scale(1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
+/* ====== DELETE BUTTON ====== */
 .delete-btn {
-  background: linear-gradient(135deg, #ef5350, #e53935);
+  background: #ef5350;
 }
 .delete-btn:hover {
-  transform: scale(1.04);
-  background: linear-gradient(135deg, #f06292, #d32f2f);
+  background: #e53935;
+  transform: translateY(-1px) scale(1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
 /* ====== SCROLLBAR TÙY CHỈNH ====== */

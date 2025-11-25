@@ -1,7 +1,7 @@
 {
     "language": {
         "en": "영어",
-        "vn": "베트남어",
+        "vi": "베트남어",
         "ko": "한국어"
     },
     "login": {
@@ -24,6 +24,9 @@
         "INVALID_PASSWORD": "비밀번호이 죽어요.",
         "USER_NOT_FOUND": "사용자가 없어요.",
         "SERVER_ERROR": "서버에러."    
+    },
+    "header": {
+        "logout": "로그아웃"
     },
     "sidebar": {
         "warehouses": "창고",
@@ -58,5 +61,19 @@
             "btn-save":"저장",
             "btn-cancel":"취소"
         }
+    },
+    "admin-consumable-specs": {
+        "header_left": "원자재 정보 목록",
+        "header_right": "원자재 정보 상세",
+        "table": {
+            "consumable_code":"원자재 코드",
+            "consumable_type":"원자재 유형",
+            "consumable_name":"원자재 이름",
+            "expiration":"유효 기간",
+            "description":"설명"
+        },
+        "btn-add":"추가",
+        "btn-edit":"수정",
+        "btn-delete":"삭제"
     }
 }

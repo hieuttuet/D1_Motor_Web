@@ -62,8 +62,8 @@ export default function Sidebar({ onToggle }) {
                   {t("sidebar.warehouses_move")}
                 </Link>
                 <Link
-                  to="/warehouse/consumablehistory"
-                  className={`submenu-item ${isActive("/warehouse/consumablehistory") ? "active" : ""}`}
+                  to="/warehouse/inventory-history"
+                  className={`submenu-item ${isActive("/warehouse/inventory-history") ? "active" : ""}`}
                 >
                   {t("sidebar.warehouses_history")}
                 </Link>

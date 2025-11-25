@@ -25,6 +25,9 @@
     "USER_NOT_FOUND": "Không tìm thấy người dùng.",
     "SERVER_ERROR": "Lỗi server."
   },
+  "header": {
+    "logout": "Đăng xuất"
+  },
   "sidebar": {
     "warehouses": "Kho NVL",
     "warehouses_label_print": "In Label",
@@ -42,7 +45,7 @@
       "username":"Tên đăng nhập",
       "full_name":"Họ và tên",
       "role":"Vai trò",
-      "actions":"Hành động"
+      "actions":"Thao tác"
     },
     "role":{
       "admin":"Quản trị",
@@ -58,5 +61,19 @@
       "btn-save":"Lưu",
       "btn-cancel":"Hủy"
     }
+  },
+  "admin-consumable-specs": {
+    "header_left": "Danh sách TTTC NVL",
+    "header_right": "Thông tin chi tiết",
+    "table": {
+      "consumable_name":"Tên NVL",
+      "consumable_code":"Code NVL",
+      "consumable_type":"Loại NVL",
+      "description":"Mô tả",
+      "expiration":"Hạn sử dụng (ngày)"
+    },
+    "btn-add":"Thêm",
+    "btn-edit":"Chỉnh sửa",
+    "btn-delete":"Xóa"
   }
 }

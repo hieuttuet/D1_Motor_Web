@@ -25,6 +25,9 @@
     "USER_NOT_FOUND": "User not found.",
     "SERVER_ERROR": "Server error."
   },
+  "header": {
+    "logout": "Logout"
+  },
   "sidebar": {
     "warehouses": "Warehouses",
     "warehouses_label_print": "Print Label",
@@ -59,5 +62,19 @@
       "btn-save":"Save",
       "btn-cancel":"Cancel"
     }
-  }
+  },
+  "admin-consumable-specs": {
+    "header_left": "Consumable Specs List",
+    "header_right": "Consumable Information Detail",
+    "table": {
+      "consumable_name":"Consumable Name",
+      "consumable_code":"Consumable Code",
+      "consumable_type":"Consumable Type",
+      "description":"Description",
+      "expiration":"Expiration (days)"
+    },
+    "btn-add":"Add",
+    "btn-edit":"Edit",
+    "btn-delete":"Delete"
+    }
 }

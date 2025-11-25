@@ -1,7 +1,9 @@
 import "./header.css";
 import { useAuth } from "../../hooks/useAuth.jsx";
 import { FaSignOutAlt, FaUser  } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 export default function Header() {
+  const { t } = useTranslation();
   const { auth, logout } = useAuth();
 
   const handleLogout = () => {
@@ -23,7 +25,7 @@ export default function Header() {
            {auth?.user?.full_name || "Guest"}
         </span>
         <button className="logout-btn" onClick={handleLogout}>
-          <FaSignOutAlt style={{ marginRight: "6px" }} /> Logout
+          <FaSignOutAlt style={{ marginRight: "6px" }} /> {t("header.logout")}
         </button>
       </div>
     </header>

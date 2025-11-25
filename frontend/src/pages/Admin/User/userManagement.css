@@ -96,14 +96,14 @@
 .user-table thead th {
   position: sticky;
   top: 0;
-  padding: 16px;
+  padding: 13px;
   text-align: center;
-  background: #1e3a8a;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  border-bottom: 2px solid #3358ad;
-  border-right: 1px solid #3c5fa9;
+  background: #195aaf;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  font-weight: 500;
+  border-bottom: 1px solid #96aac2;
+  border-right: 1px solid #b1becc;
 }
 
 /* bỏ viền cột cuối */
@@ -113,12 +113,12 @@
 
 /* ==== TABLE BODY ==== */
 .user-table tbody td {
-  padding: 10px;
+  padding: 3px;
   font-size: 15px;
-  color: #334155;
+  color: #161616;
   text-align: center;
-  border-bottom: 1px solid #e2e8f0;
-  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #c9ccd1;
+  border-right: 1px solid #c9ccd1;
   background: white;
 }
 
@@ -195,7 +195,14 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.modal h3 {text-align: center; margin: 10px; color: #004aad; margin-bottom: 30px;}
+.modal h3 { 
+  padding: 3px;
+  text-align: center;
+  margin: 3px; 
+  color: #004aad; 
+  margin-bottom: 25px; 
+  border-radius: 6px;
+  font-size: 20px;}
 
 .modal form { display: flex; flex-direction: column; gap: 10px; }
 
@@ -208,7 +215,8 @@
 
 .modal-line label {
   flex: 0 0 100px;
-  font-weight: 600;
+  font-weight: 500;
+  color:#000000
 }
 .modal input, .modal select {
   flex: 1;
@@ -221,18 +229,24 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  margin-top: 50px;
+  border-radius: 6px;
+  margin-top: 40px;
+
 }
 
-.btn-save {
-  background: #28a745;
+.modal-buttons .btn-save {
+  background: #405eaf;
   color: white;
+  width: 80%;
   border: none;
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-radius: 6px;
 }
+.modal-buttons .btn-save:hover {
+  background: #274a8c;
+}
 
-.btn-cancel {
+.modal-buttons .btn-cancel {
   background: #ccc;
   border: none;
   padding: 8px 12px;
