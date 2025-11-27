@@ -20,8 +20,8 @@ B6: Install dependencies ở thư mục backend
 npm install
 
 B7: Start ứng dụng NodeJS với PM2 (chạy ở folder backend và quyền admin)  
-cd C:\it\D1_Motor_Web\backend  
 tạo thư mục pm2_home  
+cd C:\it\D1_Motor_Web\backend  
 pm2 start server.js --name D1_Motor_Web  
 nhập đường dẫn đến thư mục pm2_home     
 pm2 save    
