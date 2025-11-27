@@ -1,18 +1,25 @@
 /* =================================================================
-   CSS cho Màn hình Tra Cứu Lịch Sử Kho (MES Style)
+   CSS cho Màn hình Tra Cứu Lịch Sử Tiêu Hao (Consumable History)
+   Đã áp dụng:
+   - Màu sắc MES/Công nghiệp thống nhất
+   - Chiều cao cố định và thanh cuộn cho bảng lịch sử (.table-responsive)
+   - Cố định header bảng (sticky header)
+   - Styling cho nút Download Excel và Dropdown
+   - Responsive cho thiết bị di động
    ================================================================= */
 
 :root {
-    --color-primary: #1a4a8c; /* Xanh Navy Đậm */
-    --color-secondary: #3b82f6; /* Xanh Sáng */
-    --color-background: #f4f6f9;
-    --color-surface: #ffffff;
+    --color-primary: #1a4a8c; /* Xanh Navy Đậm - Chủ đạo */
+    --color-secondary: #3b82f6; /* Xanh Sáng - Focus/Nổi bật */
+    --color-background: #f4f6f9; /* Nền chung */
+    --color-surface: #ffffff; /* Nền Section */
     --color-text-dark: #1f2937;
     --color-text-medium: #4b5563;
     --color-border: #d1d5db;
-    --color-in: #059669; /* Xanh lá */
-    --color-out: #ef4444; /* Đỏ */
-    --color-adjust: #f59e0b; /* Vàng cam */
+    --color-in: #059669; /* Xanh lá (IN/Nhập) */
+    --color-out: #ef4444; /* Đỏ (OUT/Xuất) */
+    --color-adjust: #f59e0b; /* Vàng cam (ADJ/Điều chỉnh) */
+    --color-excel: #107c41; /* Xanh lá đậm Excel */
     --radius-medium: 8px;
 }
 
@@ -20,14 +27,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--color-background);
     color: var(--color-text-dark);
     padding: 20px;
-    gap: 20px;
+    gap: 10px;
 }
 
-/* Header */
+/* Header chính */
 .history-lookup-container h1 {
     color: var(--color-primary);
     font-size: 28px;
@@ -37,11 +45,14 @@
     border-bottom: 2px solid #e5e7eb;
 }
 
-/* Divider */
-.history-lookup-container hr {
-    border: none;
-    border-top: 1px solid #e5e7eb;
-    margin: 0;
+/* Tiêu đề phụ */
+.history-result-section h2 {
+    color: var(--color-primary);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0; /* Xóa margin cũ */
+    padding: 0; /* Xóa padding cũ */
+    border-bottom: none;
 }
 
 /* Section Styling */
@@ -52,16 +63,6 @@
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
     border: 1px solid var(--color-border);
     padding: 20px;
-}
-
-.filter-section h2,
-.history-result-section h2 {
-    color: var(--color-primary);
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e5e7eb;
 }
 
 /* ================== FILTER SECTION ================== */
@@ -76,6 +77,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    position: relative; 
 }
 
 .filter-item label {
@@ -84,8 +86,7 @@
     font-size: 15px;
 }
 
-.filter-item input[type="text"],
-.filter-item input[type="date"],
+.filter-item input,
 .filter-item select {
     padding: 10px 12px;
     border: 1px solid var(--color-border);
@@ -110,13 +111,7 @@
 }
 
 .date-range label {
-    grid-column: 1 / 4; /* Đặt label chiếm hết 3 cột */
-}
-
-.date-range span {
-    text-align: center;
-    font-weight: 600;
-    color: var(--color-text-medium);
+    grid-column: 1 / 4; 
 }
 
 .date-range input {
@@ -126,9 +121,11 @@
 .filter-actions {
     display: flex;
     justify-content: flex-end;
+    gap: 15px;
 }
 
-.filter-actions button {
+/* Nút Tìm Kiếm */
+.filter-actions .search-btn {
     padding: 10px 25px;
     background: var(--color-primary);
     color: var(--color-surface);
@@ -141,21 +138,77 @@
     box-shadow: 0 2px 4px rgba(26, 74, 140, 0.3);
 }
 
-.filter-actions button:hover:not(:disabled) {
+.filter-actions .search-btn:hover:not(:disabled) {
     background: #163a70;
     transform: translateY(-1px);
 }
 
-.filter-actions button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+
+
+/* Dropdown Table */
+.dropdown-table {
+    position: absolute;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 70px;
 }
 
-/* ================== HISTORY TABLE ================== */
+.dropdown-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.dropdown-table th {
+    background: #e0f2fe;
+    color: var(--color-text-dark);
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--color-border);
+    font-weight: 600;
+    position: sticky; 
+    top: 0;
+    z-index: 5;
+}
+
+.dropdown-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-table tr:hover td {
+    background: #f0f8ff;
+}
+
+/* ================== HISTORY TABLE (CỐ ĐỊNH CHIỀU CAO) ================== */
+
 .table-responsive {
-    overflow-x: auto;
+    /* Thiết lập chiều cao cố định cho nội dung bảng và cho phép cuộn */
+    height: 450px; 
+    overflow-y: auto; 
+    overflow-x: auto; 
+    border: 1px solid #e5e7eb; 
+    border-radius: 6px;
+    padding: 0px;
+    margin: 0px;
 }
-
+/* Thêm bố cục cho tiêu đề và nút Download */
+.history-header-controls {
+    display: flex;
+    justify-content: space-between; /* Đẩy tiêu đề và nút ra hai phía */
+    align-items: center;
+    margin-bottom: 10px; /* Tạo khoảng cách với bảng */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb; /* Giữ lại đường kẻ */
+}
 .history-table {
     width: 100%;
     border-collapse: collapse;
@@ -163,13 +216,41 @@
 }
 
 .history-table thead th {
-    background: #e0f2fe; /* Nền header bảng */
+    background: #e0f2fe; 
     color: var(--color-text-dark);
     padding: 12px;
     text-align: left;
     border-bottom: 2px solid var(--color-primary);
+    position: sticky; /* Cố định header */
+    top: 0; 
+    z-index: 2; 
+}
+/* Nút Tải Excel */
+.history-header-controls .excel-btn {
+    padding: 10px 25px;
+    background: var(--color-excel); 
+    color: var(--color-surface);
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(16, 124, 65, 0.3);
+    padding: 8px 20px; /* Làm nhỏ lại một chút cho phù hợp với tiêu đề */
+    font-size: 15px;
 }
 
+.history-header-controls .excel-btn:hover:not(:disabled) {
+    background: #0d6d39;
+    transform: translateY(-1px);
+}
+
+.history-header-controls button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
 .history-table tbody td {
     padding: 10px 12px;
     border-bottom: 1px solid #e5e7eb;
@@ -178,16 +259,6 @@
 
 .history-table tbody tr:hover {
     background: #f9fbfd;
-}
-
-.history-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* Cell Specific Styling */
-.item-name-cell {
-    min-width: 180px;
-    font-weight: 500;
 }
 
 .quantity-cell {
@@ -201,7 +272,14 @@
     color: var(--color-text-medium);
 }
 
-/* Transaction Type Coloring */
+.loading-row, .no-data-row {
+    text-align: center;
+    padding: 15px !important;
+    font-style: italic;
+    color: var(--color-text-medium);
+}
+
+/* Transaction Type Coloring (Status) */
 .transaction-type {
     font-weight: 700;
     text-align: center;
@@ -223,36 +301,25 @@
     border: 1px solid var(--color-out);
 }
 
-.type-adjust {
-    background-color: #fef3c7;
-    color: var(--color-adjust);
-    border: 1px solid var(--color-adjust);
-}
-
-.loading-row, .no-data-row {
-    text-align: center;
-    padding: 20px !important;
-    font-style: italic;
-    color: var(--color-text-medium);
-}
 
 /* ================== PAGINATION ================== */
 .pagination-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 10px 0;
+    gap: 10px;
+
 }
 
 .pagination-section button {
-    padding: 8px 15px;
+    padding: 6px 10px;
     background: var(--color-surface);
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
     border-radius: 6px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 13px;
     transition: all 0.2s;
 }
 
@@ -271,6 +338,7 @@
 
 .pagination-section span {
     font-weight: 500;
+    font-size: 13px;
     color: var(--color-text-dark);
 }
 
@@ -278,19 +346,26 @@
 
 @media (max-width: 768px) {
     .history-lookup-container {
-        padding: 10px;
+        padding: 15px;
     }
     .filter-grid {
         grid-template-columns: 1fr;
     }
     
     .filter-actions {
-        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
     }
     
-    /* Thiết lập bảng hiển thị kiểu 'thẻ' trên di động */
+    .filter-actions button {
+        width: 100%;
+        max-width: none;
+    }
+    
+    /* Responsive cho bảng (chuyển sang dạng thẻ) */
     .history-table thead {
-        display: none; /* Ẩn header trên di động */
+        display: none; 
     }
 
     .history-table, .history-table tbody, .history-table tr, .history-table td {
@@ -307,7 +382,7 @@
     .history-table td {
         border: none;
         position: relative;
-        padding-left: 50%; /* Tạo không gian cho label */
+        padding-left: 50%; 
         text-align: right;
     }
 
@@ -327,3 +402,6 @@
         float: right;
     }
 }
+
+
+

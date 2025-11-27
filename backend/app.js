@@ -5,6 +5,7 @@ import authRoutes from "./src/routes/auth.routes.js";
 import userRoutes from "./src/routes/user.routes.js";
 import consumableSpecsRoutes from "./src/routes/consumableSpecs.routes.js";
 import consumablePrintRoutes from "./src/routes/consumablePrint.routes.js";
+import consumableHistoryRoutes from "./src/routes/consumableHistory.routes.js";
 
 dotenv.config();
 BigInt.prototype.toJSON = function() { return Number(this); }; //JSON.stringify() tự động chuyển BigInt → Number.
@@ -22,6 +23,7 @@ app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", consumableSpecsRoutes);
 app.use("/api", consumablePrintRoutes);  
+app.use("/api", consumableHistoryRoutes);  
 
 
 // app.get("/", (req, res) => res.send("Backend running 🚀"));
