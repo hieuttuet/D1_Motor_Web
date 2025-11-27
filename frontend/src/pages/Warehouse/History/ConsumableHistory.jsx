@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-// Import các API cần thiết
+import { formatDateTime } from "../../../utils/date.js";
 import { getConsumables } from "../../../api/admin/consumableApi.js";
 import { saveAs } from "file-saver";
 import "./consumableHistory.css";
@@ -186,8 +186,12 @@ export default function ConsumableHistory() {
           fileName = filenameSection.split("=")[1].trim().replace(/['"]/g, "");
         }
       }
+      // Tạo blob và lưu file
+  const blob = new Blob([res.data], {
+    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  });
       // 3. Lưu Blob (dữ liệu file nhị phân) dưới dạng file
-      saveAs(res.data, fileName);
+      saveAs(blob, fileName);
     } catch (err) {
       if (err.response) {
         showMessage(err.response.data.message || "Lỗi server", "error");
@@ -368,7 +372,7 @@ export default function ConsumableHistory() {
                       {item.event_id}
                     </td>
                     <td data-label="Event Time" className="date-cell">
-                      {item.event_time}
+                      {formatDateTime(item.event_time)}
                     </td>
                     <td data-label="Event User">{item.event_user}</td>
                   </tr>

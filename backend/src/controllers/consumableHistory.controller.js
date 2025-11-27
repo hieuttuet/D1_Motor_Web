@@ -32,8 +32,11 @@ export const downloadConsumableHistoryController = async (req, res) => {
     };
     // 1. Gọi Model để LẤY DỮ LIỆU THÔ
         const rows = await downloadConsumableHistoryModel(filters);
-
-        // 2. TẠO FILE EXCEL (Xử lý trong Controller)
+        if (!rows || rows.length === 0) {
+            // Có thể trả về 200 OK với file rỗng, hoặc trả về lỗi 404/400 nếu không có data
+            return error(res, "Không có dữ liệu phù hợp để xuất Excel.", 400); 
+        }
+        // 2. TẠO FILE EXCEL
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet("Consumable History");
         
@@ -65,7 +68,7 @@ export const downloadConsumableHistoryController = async (req, res) => {
             'Content-Disposition', 
             `attachment; filename=${fileName}`
         );
-
+        console.log(excelBuffer);
         return res.send(excelBuffer); // Gửi Buffer về Frontend
   } catch (err) {
     console.error("Lỗi download lịch sử NVL:", err);
