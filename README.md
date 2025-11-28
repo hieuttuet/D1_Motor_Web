@@ -18,7 +18,7 @@ npm run build
 B6: Install dependencies ở thư mục backend  
 npm install
 
-B7: Start ứng dụng NodeJS với PM2 (chạy ở folder backend và quyền admin)
+B7: Start ứng dụng NodeJS với PM2 (chạy ở folder backend và quyền admin)  
 mkdir C:\it\pm2_home (tạo thư mục pm2_home)   
 setx PM2_HOME "C:\it\pm2_home"
 cd C:\it\D1_Motor_Web\backend  
