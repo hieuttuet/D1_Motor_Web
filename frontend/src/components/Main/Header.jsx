@@ -25,6 +25,9 @@ export default function Header() {
         <div className="header-language">
           <LanguageSwitcher />
         </div>
+        <div className="header-language">
+          <LanguageSwitcher />
+        </div>
         <span className="user-info">
           <FaUser style={{ marginRight: 6 }} />
           {auth?.user?.full_name || "Guest"}
