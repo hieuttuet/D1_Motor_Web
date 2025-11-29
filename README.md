@@ -23,6 +23,7 @@ mkdir C:\it\pm2_home (tạo thư mục pm2_home)
 setx PM2_HOME "C:\it\pm2_home"  
 quan trọng: Reset PC   
 cd C:\it\D1_Motor_Web\backend  
+<<<<<<< Updated upstream
 pm2 start server.js --name D1_Motor_Web     
 pm2 save    
 
@@ -30,6 +31,15 @@ B8: Tạo Windows Service chạy PM2 ( CMD chạy với quyền admin ở bất 
 pm2-service-install -n D1_Motor_Web  
 Quan trọng: nhưng cái nào có Y/N thì ấn Y không có thì enter bỏ qua  
 kiểm tra đường dẫn đến thư mục pm2_home       
+=======
+tạo thư mục pm2_home  
+pm2 start server.js --name D1_Motor_Web       
+pm2 save    
+
+B8: Tạo Windows Service chạy PM2 ( CMD chạy với quyền admin ở bất kỳ đâu)  
+pm2-service-install -n D1_Motor_Web
+nhập đường dẫn đến thư mục pm2_home 
+>>>>>>> Stashed changes
 
 B9: Tắt firewall
 Nếu cài eset thì mở port Windows Firewall 

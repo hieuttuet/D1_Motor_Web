@@ -1,7 +1,8 @@
 import "./header.css";
 import { useAuth } from "../../hooks/useAuth.jsx";
-import { FaSignOutAlt, FaUser  } from "react-icons/fa";
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher.jsx";
 export default function Header() {
   const { t } = useTranslation();
   const { auth, logout } = useAuth();
@@ -20,9 +21,13 @@ export default function Header() {
       </div>
 
       <div className="header-right">
+        {/* Ngôn ngữ */}
+        <div className="header-language">
+          <LanguageSwitcher />
+        </div>
         <span className="user-info">
           <FaUser style={{ marginRight: 6 }} />
-           {auth?.user?.full_name || "Guest"}
+          {auth?.user?.full_name || "Guest"}
         </span>
         <button className="logout-btn" onClick={handleLogout}>
           <FaSignOutAlt style={{ marginRight: "6px" }} /> {t("header.logout")}

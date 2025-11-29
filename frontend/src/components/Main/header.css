@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  height: 70px;
+  height: 65px;
   padding: 0 24px;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
@@ -26,40 +26,36 @@
   border-radius: 8px;
 }
 
-/* === SEARCH === */
-.search-box {
-  margin-left: 50px;
-  margin-top: -30px;
-}
-
-.search-input {
-  padding: 8px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  color: #374151;
-  width: 420px;
-  max-width: 30vw;
-  transition: all 0.3s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-}
-
 /* === PHẦN BÊN PHẢI === */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 15px;
   flex-wrap: nowrap;
   white-space: nowrap;
 }
+.header-language {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  border: #1f2937 ;
+  cursor: pointer;
+}
+.header-language .current-lang img {
+  width: 35px;
+  height: 28px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+.header-language .lang-menu {
+  position: absolute;
+  top: 0px;  
+  left: -400%; 
 
+}
 .user-info {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #1f2937;
   background-color: #c2c5cc;
   padding: 6px 12px;
@@ -72,7 +68,7 @@
   background-color: #c91616;
   color: #fff;
   border: none;
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.9rem;
   cursor: pointer;
