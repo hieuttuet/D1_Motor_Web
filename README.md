@@ -1,3 +1,5 @@
+DEPLOY SERVER  
+
 B1: Cài Node.js và Mariadb và Github        
 Sau đó kiểm tra bằng cmd:    
 node -v    
@@ -46,6 +48,25 @@ cd C:\it\D1_Motor_Web\backend
 pm2 start server.js --name D1_Motor_Web     
 pm2 save    
 rồi làm B8
+
+
+UPDATE SERVER  
+
+B1: git pull    
+
+B2: Buil Dist ở thư mục frontend
+cd /d C:\it\D1_Motor_Web\frontend   
+npm install  
+npm run build  
+
+B3: Install dependencies ở thư mục backend  
+npm install --production     
+
+B4:   
+pm2 reload D1_Web_Motor    
+pm2 save  
+
+
 
 
 
