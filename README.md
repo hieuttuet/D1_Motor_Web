@@ -54,7 +54,7 @@ UPDATE SERVER
 
 B1: git pull    
 
-B2: Buil Dist ở thư mục frontend
+B2: Buil Dist ở thư mục frontend  
 cd /d C:\it\D1_Motor_Web\frontend   
 npm install  
 npm run build  
