@@ -56,8 +56,8 @@ export default function Sidebar({ onToggle }) {
                   {t("sidebar.warehouses_label_print")}
                 </Link>
                 <Link
-                  to="/warehouse/consumablemove"
-                  className={`submenu-item ${isActive("/warehouse/consumablemove") ? "active" : ""}`}
+                  to="/warehouse/consumable-move"
+                  className={`submenu-item ${isActive("/warehouse/consumable-move") ? "active" : ""}`}
                 >
                   {t("sidebar.warehouses_move")}
                 </Link>

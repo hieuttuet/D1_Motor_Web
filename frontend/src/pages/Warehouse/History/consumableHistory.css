@@ -1,12 +1,4 @@
-/* =================================================================
-   CSS cho Màn hình Tra Cứu Lịch Sử Tiêu Hao (Consumable History)
-   Đã áp dụng:
-   - Màu sắc MES/Công nghiệp thống nhất
-   - Chiều cao cố định và thanh cuộn cho bảng lịch sử (.table-responsive)
-   - Cố định header bảng (sticky header)
-   - Styling cho nút Download Excel và Dropdown
-   - Responsive cho thiết bị di động
-   ================================================================= */
+
 
 :root {
     --color-primary: #1a4a8c; /* Xanh Navy Đậm - Chủ đạo */
@@ -143,20 +135,19 @@
     transform: translateY(-1px);
 }
 
-
-
 /* Dropdown Table */
-.dropdown-table {
+.filter-section .dropdown-table {
     position: absolute;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-medium);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%; 
-    max-height: 200px;
+    width: 100%;
+    top: 100%; 
+    max-height: 255px;
     overflow-y: auto;
     z-index: 1000;
-    margin-top: 70px;
+    margin-top: 5px;
 }
 
 .dropdown-table table {
@@ -166,7 +157,7 @@
 }
 
 .dropdown-table th {
-    background: #e0f2fe;
+    background: #a1c4da;
     color: var(--color-text-dark);
     text-align: left;
     padding: 10px 12px;
@@ -185,7 +176,7 @@
 }
 
 .dropdown-table tr:hover td {
-    background: #f0f8ff;
+    background: #cbddeb;
 }
 
 /* ================== HISTORY TABLE (CỐ ĐỊNH CHIỀU CAO) ================== */

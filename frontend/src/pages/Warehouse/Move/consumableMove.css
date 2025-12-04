@@ -1,5 +1,4 @@
-
-.label-print-container {
+.consumable-move-container {
     /* Đảm bảo chiếm đủ không gian, nền sáng, font rõ ràng */
     width: 100%;
     /* height: 100vh; */ /* Bỏ h-100vh nếu component nằm trong layout có scroll */
@@ -14,7 +13,7 @@
 }
 
 /* Header chính */
-.label-print-container h1:first-child {
+.consumable-move-container h1:first-child {
     color: #1a4a8c; /* Xanh đậm chủ đạo */
     font-size: 26px;
     font-weight: 700;
@@ -25,7 +24,7 @@
 }
 
 /* Header phụ (Search Info, Consumable Info) */
-.label-print-container h2 {
+.consumable-move-container h2 {
     color: #3a57b7; /* Màu xanh nổi bật */
     font-size: 20px;
     font-weight: 600;
@@ -49,7 +48,7 @@
 .positions-section,
 .search-section,
 .info-section,
-.quantity-section,
+.location-section,
 .button-section {
     background: white;
     border-radius: 8px; /* Bo tròn nhẹ */
@@ -61,13 +60,13 @@
 .positions-section,
 .search-section,
 .info-section,
-.quantity-section {
-    padding: 10px 20px;
+.location-section {
+    padding: 15px 20px;
 }
 
 .search-section:hover,
 .info-section:hover,
-.quantity-section:hover {
+.location-section:hover {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -93,13 +92,14 @@
 
 .search-input-group input {
     flex: 1;
-    padding: 10px 1px;
+    padding: 10px 14px;
     border: 1px solid #d1d5db;
     border-radius: 6px;
     font-size: 16px;
     transition: all 0.3s ease;
     background: #ffffff;
     min-width: 200px; /* đảm bảo input có kích thước tối thiểu */
+    max-width: 400px;
 }
 
 .search-input-group input:focus {
@@ -132,8 +132,8 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    /* Đảm bảo cặp thông tin có độ rộng hợp lý (tổng Label + Max-Value) */
-    min-width: 400px; 
+    flex: 1; 
+    min-width: 300px; /* Đảm bảo cặp thông tin có độ rộng hợp lý */
 }
 
 .info-pair label {
@@ -143,8 +143,8 @@
 }
 
 .info-value {
-    /* Đặt độ rộng tối đa cho ô giá trị, làm cho ô ngắn hơn */
-    max-width: 400px; 
+    flex: 1; 
+    padding: 5px 10px;
     background: #eef1f6; /* Nền xám nhạt cho giá trị */
     border: 1px solid #d1d5db;
     border-radius: 6px;
@@ -153,47 +153,67 @@
     align-items: center;
     font-weight: 500;
     color: #1f2937;
-    overflow-wrap: break-word; 
 }
 
 .info-value:empty::before {
-    content: "-"; /* Đổi từ "N/A" thành "-" cho ngắn */
+    content: "N/A";
     color: #9ca3af;
     font-style: italic;
     font-weight: normal;
 }
-/* Quantity Section */
-.quantity-section {
+
+/* Location Section */
+.location-section {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    /* Tối ưu hóa: Chia thành 2 cột cân đối */
+    gap: 30px; 
+    flex-wrap: wrap; 
+    padding: 15px 20px; /* Giữ padding chung */
 }
 
-.quantity-section label {
+/* Định nghĩa một nhóm Location (From hoặc To) */
+.location-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Khoảng cách giữa Label và Value/Select */
+    flex: 1; /* Chia đều không gian giữa From và To */
+    min-width: 300px; /* Đảm bảo cặp thông tin có độ rộng hợp lý */
+}
+
+.location-group label {
     font-weight: 600;
     font-size: 16px;
-    min-width: 140px;
+    min-width: 140px; 
     color: #4b5563;
 }
 
-.quantity-section input {
-    padding: 8px 10px;
+/* Định dạng cho Select box */
+.location-group select {
+    flex: 1; 
+    padding: 5px 10px;
     border: 1px solid #d1d5db;
     border-radius: 6px;
     font-size: 16px;
-    width: 120px;
-    text-align: center; /* Số lượng nên căn giữa */
-    transition: all 0.3s ease;
-    background: #ffffff;
+    background-color: #ffffff;
+    color: #1f2937;
+    min-height: 40px;
+    max-width: 400px;
+    /* Đảm bảo Select box có kích thước tương đương với info-value */
 }
 
-.quantity-section input:focus {
+.location-group select:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: #4d88e7;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
-/* Button Section - Print */
+.location-group select:disabled {
+    background-color: #eef1f6; 
+    cursor: not-allowed;
+    opacity: 0.8; 
+}
+
+/* Button Section  */
 .button-section {
     display: flex;
     justify-content: flex-end;
@@ -230,120 +250,6 @@
     box-shadow: none;
 }
 
-/* Positions Section */
-.positions-section {
-    display: flex;
-    justify-content: space-between; /* Đẩy Position và Test Print ra hai bên */
-    align-items: center;
-}
-
-.position-grid {
-    display: flex;
-    gap: 25px; /* Khoảng cách giữa Location X và Y */
-}
-
-.position-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.position-row label {
-    font-weight: 600;
-    min-width: 70px; /* Đặt lại width cho label nhỏ hơn */
-    font-size: 16px;
-    color: #4b5563;
-}
-
-.position-row input {
-    width: 60px; /* Kích thước nhỏ hơn cho tọa độ */
-    padding: 8px 10px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 15px;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.position-row input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-/* Test Print Section */
-.test-print-section button {
-    padding: 10px 18px;
-    background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.3);
-}
-
-.test-print-section button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px -3px rgba(5, 150, 105, 0.4);
-    background: linear-gradient(135deg, #2c5aa0 0%, #3182ce 100%);
-}
-
-.test-print-section button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-    box-shadow: none;
-}
-
-/* Dropdown Table */
-.search-section .dropdown-table {
-    position: absolute;
-    background: white;
-    border: 1px solid #d1d5db;
-    top: 100%;
-    border-radius: 6px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    width: calc(100% + 200px); /* Bằng độ rộng input trừ label */
-    max-height: 255px;
-    overflow-y: auto;
-    z-index: 1000;
-    margin-top: 5px;
-}
-
-.dropdown-table table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-}
-
-.dropdown-table th {
-    background: #739ace; /* Nền header dropdown */
-    color: #1f2937;
-    text-align: left;
-    padding: 8px 12px;
-    border-bottom: 2px solid #d1d5db;
-    font-weight: 600;
-    position: sticky;
-    top: 0;
-    z-index: 5;
-}
-
-.dropdown-table td {
-    padding: 8px 12px;
-    border-bottom: 1px solid #e5e7eb;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.dropdown-table tr:last-child td {
-    border-bottom: none;
-}
-
-.dropdown-table tr:hover td {
-    background: #e0f2fe; /* Màu hover nhẹ nhàng */
-}
 
 /* Responsive */
 @media (max-width: 1200px) {
@@ -359,7 +265,7 @@
 }
 
 @media (max-width: 768px) {
-    .label-print-container {
+    .consumable-move-container {
         padding: 15px;
     }
 
@@ -411,15 +317,24 @@
         width: 100%;
     }
 
-    .quantity-section {
-        flex-direction: column;
+    .location-section {
+        flex-direction: column; /* Chuyển sang stack vertical */
         align-items: flex-start;
         gap: 10px;
     }
 
-    .quantity-section input {
+    .location-group {
+        min-width: 100%;
+        flex-direction: row; 
+        align-items: center;
+    }
+    
+    .location-group label {
+        min-width: 120px;
+    }
+
+    .location-group select {
         width: 100%;
-        max-width: 150px;
     }
 
     .button-section {
@@ -433,13 +348,13 @@
 }
 
 @media (max-width: 480px) {
-    .label-print-container h1:first-child {
+    .consumable-move-container h1:first-child {
         font-size: 22px;
     }
-    .label-print-container h2 {
+    .consumable-move-container h2 {
         font-size: 18px;
     }
-    .position-row label, .search-input-group label, .quantity-section label {
+    .position-row label, .search-input-group label, .location-section label {
         min-width: 100px;
         font-size: 15px;
     }

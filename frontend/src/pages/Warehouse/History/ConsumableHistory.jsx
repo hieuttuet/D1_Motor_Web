@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { formatDateTime } from "../../../utils/date.js";
+import { formatDateTimeAMPM } from "../../../hooks/date.js";
 import { getConsumables } from "../../../api/admin/consumableApi.js";
 import { saveAs } from "file-saver";
 import "./consumableHistory.css";
@@ -26,7 +26,7 @@ export default function ConsumableHistory() {
   const [downloading, setDownloading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1); // Mặc định là 1
-  const [totalRecords, setTotalRecords] = useState(0);  // Mặc định là 0
+  const [totalRecords, setTotalRecords] = useState(0); // Mặc định là 0
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -187,9 +187,9 @@ export default function ConsumableHistory() {
         }
       }
       // Tạo blob và lưu file
-  const blob = new Blob([res.data], {
-    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-  });
+      const blob = new Blob([res.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
       // 3. Lưu Blob (dữ liệu file nhị phân) dưới dạng file
       saveAs(blob, fileName);
     } catch (err) {
@@ -230,7 +230,7 @@ export default function ConsumableHistory() {
               onChange={(e) => handleChangeCode(e.target.value)}
               onFocus={() => setShowDropdown(true)}
               onKeyDown={handleKeyDown}
-              placeholder="Nhập code hoặc chọn từ danh sách..."
+              placeholder="Consumable Code Input ..."
             />
             {showDropdown && filteredListCode.length > 0 && (
               <div className="dropdown-table">
@@ -263,7 +263,7 @@ export default function ConsumableHistory() {
               name="consumableId"
               value={filters.consumableId}
               onChange={handleFilterChange}
-              placeholder="Nhập ID (serial/batch)..."
+              placeholder="Consumable ID Input ..."
             />
           </div>
 
@@ -313,7 +313,7 @@ export default function ConsumableHistory() {
       {/* 2. Bảng Lịch sử */}
       <div className="history-result-section">
         <div className="history-header-controls">
-          <h2>Search Results ({totalRecords} records)</h2>
+          <h2>Search Results ({totalRecords} rows)</h2>
           <button
             onClick={handleDownloadExcel}
             disabled={loading || downloading || historyList.length === 0}
@@ -372,7 +372,7 @@ export default function ConsumableHistory() {
                       {item.event_id}
                     </td>
                     <td data-label="Event Time" className="date-cell">
-                      {formatDateTime(item.event_time)}
+                      {formatDateTimeAMPM(item.event_time)}
                     </td>
                     <td data-label="Event User">{item.event_user}</td>
                   </tr>

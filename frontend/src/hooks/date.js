@@ -33,3 +33,27 @@ export function formatDateTime(iso) {
 
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
+// Format: YYYY-MM-DD HH:MM AM/PM
+export function formatDateTimeAMPM(iso) {
+  if (!iso) return "";
+
+  const d = new Date(iso);
+
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+
+  let hour = d.getHours();
+  const minute = String(d.getMinutes()).padStart(2, "0");
+
+  // Xác định AM/PM
+  const ampm = hour >= 12 ? "PM" : "AM";
+
+  // Đổi sang dạng 12h
+  hour = hour % 12;
+  if (hour === 0) hour = 12;
+
+  const hourStr = String(hour).padStart(2, "0");
+
+  return `${year}-${month}-${day} ${hourStr}:${minute} ${ampm}`;
+}
