@@ -1,0 +1,225 @@
+/* Thiết lập container chung */
+.history-container {
+    padding: 30px;
+    background-color: #f4f5f7;
+    min-height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card tìm kiếm */
+.history-search-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.history-search-card h2 {
+    color: #1a4a8c;
+    margin-top: 0;
+    font-size: 24px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+/* Form tìm kiếm */
+.search-form {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.search-form input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-form button {
+    padding: 12px 25px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.search-form button:hover:not(:disabled) {
+    background-color: #0b5ed7;
+    transform: translateY(-1px);
+}
+
+.search-form button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
+
+/* --- Khu vực kết quả và thông tin máy --- */
+.history-results-area {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.history-results-area h3 {
+    color: #1a4a8c;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.machine-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.machine-summary-grid strong {
+    color: #495057;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #e9ecef;
+    margin: 20px 0;
+}
+
+/* --- Bảng Lịch Sử --- */
+.history-table-wrapper {
+    overflow-x: auto; /* Cho phép cuộn ngang nếu màn hình nhỏ */
+}
+
+.history-table-wrapper h4 {
+    color: #495057;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+table thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.1s;
+}
+
+table tbody tr:hover {
+    background-color: #f0f4f8;
+}
+
+table tbody td {
+    padding: 12px 15px;
+    vertical-align: top;
+}
+
+.description-cell {
+    max-width: 300px;
+    white-space: normal; /* Cho phép chữ xuống dòng */
+}
+
+/* --- Badge Trạng Thái --- */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+}
+
+.status-new {
+    background-color: #0dcaf0; /* Cyan */
+}
+.status-active {
+    background-color: #198754; /* Green */
+}
+.status-repair {
+    background-color: #ffc107; /* Yellow/Orange */
+    color: #333;
+}
+.status-default {
+    background-color: #6c757d; /* Grey */
+}
+
+/* --- Responsive cho điện thoại --- */
+@media (max-width: 768px) {
+    .history-container {
+        padding: 15px;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .machine-summary-grid {
+        grid-template-columns: 1fr; /* Stack cột trên điện thoại */
+    }
+
+    /* Ẩn tiêu đề cột trên điện thoại và dùng data-label */
+    table thead {
+        display: none;
+    }
+
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .description-cell {
+        max-width: 100%;
+    }
+}

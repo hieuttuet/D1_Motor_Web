@@ -1,5 +1,5 @@
 import { getConsumableSpecById, updateConsumableInfo } from "../models/consumableMove.model.js";
-import { getServerTime } from "../models/consumablePrint.model.js";
+import { getServerTime } from "../models/common.model.js";
 import { ok, error } from "../middlewares/responseHandler.js";
 import { formatMySQLDate } from "../middlewares/formatDate.js";
 

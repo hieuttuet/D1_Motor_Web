@@ -4,3 +4,10 @@ export const formatMySQLDate = (date) => {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ` +
          `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
 };
+
+// Hàm cộng thêm 1 ngày
+export const addOneDay = (dateStr) =>{
+  const d = new Date(dateStr);
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().slice(0, 19).replace("T", " ");
+}

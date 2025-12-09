@@ -33,7 +33,8 @@
 .content-area {
   flex: 1;
   background-color: #f4f5f7;
-  overflow: hidden; /* ✅ Không cho scroll */
+  overflow-y: auto; /* ✅ Chỉ cuộn khi nội dung vượt quá (auto) */
+  overflow-x: hidden; /* Ngăn chặn cuộn ngang nếu không cần thiết */
   padding: 0;       /* ✅ bỏ padding để Home fill 100% */
   margin: 3px;
 }

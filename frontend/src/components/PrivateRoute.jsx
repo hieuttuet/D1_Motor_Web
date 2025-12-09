@@ -1,6 +1,6 @@
-// src/components/PrivateRoute.jsx // hàm xử lý route riêng tư bắt login mới cho truy cập route 
+// src/components/PrivateRoute.jsx // hàm xử lý route riêng tư bắt login mới cho truy cập route
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth.jsx";
+import { useAuth } from "./useAuth.jsx";
 
 export default function PrivateRoute({ children }) {
   const { auth } = useAuth();

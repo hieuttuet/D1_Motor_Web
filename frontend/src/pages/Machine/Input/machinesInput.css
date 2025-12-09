@@ -1,0 +1,297 @@
+/* Thiết lập font và nền chung */
+.equipment-entry-container {
+  /* Loại bỏ căn giữa nếu component này nằm trong Main Content Wrapper rộng hơn */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Căn trên thay vì căn giữa tuyệt đối */
+  width: 100%; /* Chiếm 100% không gian container cha */
+  padding: 20px;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Card chứa Form */
+.form-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  /* Shadow mềm mại, hiện đại */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  /* Tăng giới hạn tối đa, cho phép nó rộng hơn nếu container cha rộng */
+  max-width: 900px;
+  width: 100%;
+}
+
+/* --- Header Section --- */
+.form-header {
+  margin-bottom: 25px;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 15px;
+}
+
+.header-icon {
+  font-size: 28px;
+  display: inline-block;
+  margin-right: 5px;
+  color: #3b82f6;
+}
+
+.form-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a4a8c;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.form-header p {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+/* --- Form Layout (Grid) --- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px; /* TĂNG KHOẢNG CÁCH */
+  margin-bottom: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* --- Labels và Icons --- */
+.form-group label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #495057;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-label {
+  font-size: 16px;
+  margin-right: 8px;
+  color: #3b82f6;
+}
+
+.required-star {
+  color: #dc3545;
+  margin-left: 4px;
+}
+
+/* --- Input Fields (Text, Number, Select, Textarea) --- */
+.form-group input:not([type="file"]),
+.form-group select,
+.form-group textarea {
+  padding: 12px 14px; /* Tăng padding */
+  border: 1px solid #ced4da;
+  border-radius: 8px; /* Bo tròn hơn */
+  font-size: 16px;
+  color: #495057;
+  transition: all 0.2s;
+  background-color: #ffffff;
+}
+
+/* Hover/Focus States */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3b82f6;
+  /* Focus Ring mỏng và đẹp */
+  box-shadow: 0 0 0 1px #3b82f6, 0 0 0 4px rgba(59, 130, 246, 0.15);
+  outline: none;
+  background-color: #ffffff;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+/* --- Date Input Custom Style --- */
+.date-input-wrapper {
+  position: relative;
+}
+.date-input-wrapper input {
+  margin-bottom: 20px;
+}
+
+.calendar-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+  font-size: 18px;
+}
+
+/* --- File Upload Style --- */
+.file-upload-group {
+  margin-top: 10px;
+}
+.file-upload-group .file-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.file-input-wrapper input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  background-color: #acc0df;
+  color: white;
+  padding: 3px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 8px;
+  font-weight: 300;
+  transition: background-color 0.2s;
+  border: none;
+}
+
+.custom-file-upload:hover {
+  background-color: #97abc9;
+}
+
+.file-name-display {
+  font-size: 15px;
+  color: #6c757d;
+}
+
+/* --- Submit Button --- */
+.submit-button {
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.submit-button:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(13, 110, 253, 0.4);
+}
+/* --- Hiển thị ảnh xem trước --- */
+.image-previews-container {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f5f8fc; /* Nền nhẹ để phân biệt */
+  border: 1px solid #e0e6ed;
+  border-radius: 8px;
+}
+
+.previews-grid {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép xuống dòng nếu nhiều ảnh */
+  gap: 15px;
+}
+
+.preview-item {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #d1d9e6;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #ffffff;
+  /* Quan trọng: Thiết lập relative để định vị nút xóa */
+  position: relative;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-name {
+  font-size: 12px;
+  color: #495057;
+  margin: 5px 0 5px 0;
+  padding: 0 5px;
+  text-align: center;
+  /* Giới hạn tên file trên 2 dòng và thêm dấu '...' nếu quá dài */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.no-file-selected {
+  font-style: italic;
+  color: #6c757d;
+  font-size: 14px;
+  padding: 10px 0;
+}
+/* STYLE CHO NÚT XÓA */
+.remove-image-btn {
+  position: absolute;
+  top: 0px; /* Đẩy lên góc trên cùng */
+  right: 0px; /* Đẩy sang góc phải cùng */
+  background-color: #8f8687; /* Màu đỏ */
+  color: white;
+  border-radius: 0 6px 0 6px; /* Bo góc phải trên và góc trái dưới */
+  width: 15px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1; /* Căn giữa chữ X */
+  transition: background-color 0.2s;
+  z-index: 10; /* Đảm bảo nút nằm trên ảnh */
+  padding: 0; /* Xóa padding mặc định */
+}
+
+.remove-image-btn:hover {
+  background-color: #c82333;
+}
+
+/* --- Responsive (Cho màn hình nhỏ) --- */
+@media (max-width: 768px) {
+  .form-card {
+    padding: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .equipment-entry-container {
+    padding: 15px;
+  }
+}
+@media (max-width: 600px) {
+  /* ... (Giữ nguyên style cũ) ... */
+  .previews-grid {
+    justify-content: center;
+  }
+  .preview-item {
+    width: 120px;
+  }
+}

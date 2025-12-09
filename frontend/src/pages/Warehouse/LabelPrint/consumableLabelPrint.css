@@ -100,6 +100,7 @@
     transition: all 0.3s ease;
     background: #ffffff;
     min-width: 200px; /* đảm bảo input có kích thước tối thiểu */
+    width: 400px; /* đảm bảo input có kích thước tối đà */
 }
 
 .search-input-group input:focus {
@@ -125,7 +126,7 @@
     display: flex;
     gap: 30px;
     /* Dùng flex-wrap để xuống dòng khi màn hình nhỏ */
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 .info-pair {
@@ -133,18 +134,18 @@
     align-items: center;
     gap: 15px;
     /* Đảm bảo cặp thông tin có độ rộng hợp lý (tổng Label + Max-Value) */
-    min-width: 400px; 
+    min-width: 400px;
 }
 
 .info-pair label {
     font-weight: 600;
-    min-width: 140px; 
+    min-width: 140px;
     color: #4b5563;
 }
 
 .info-value {
     /* Đặt độ rộng tối đa cho ô giá trị, làm cho ô ngắn hơn */
-    max-width: 400px; 
+    max-width: 400px;
     background: #eef1f6; /* Nền xám nhạt cho giá trị */
     border: 1px solid #d1d5db;
     border-radius: 6px;
@@ -153,12 +154,12 @@
     align-items: center;
     font-weight: 500;
     color: #1f2937;
-    overflow-wrap: break-word; 
+    overflow-wrap: break-word;
 }
 
 .info-value:empty::before {
     content: "-"; /* Đổi từ "N/A" thành "-" cho ngắn */
-    color: #9ca3af;
+    color: #95989e;
     font-style: italic;
     font-weight: normal;
 }
@@ -239,7 +240,7 @@
 
 .position-grid {
     display: flex;
-    gap: 25px; /* Khoảng cách giữa Location X và Y */
+    gap: 55px; /* Khoảng cách giữa Location X và Y */
 }
 
 .position-row {
@@ -250,7 +251,7 @@
 
 .position-row label {
     font-weight: 600;
-    min-width: 70px; /* Đặt lại width cho label nhỏ hơn */
+    min-width: 100px; /* Đặt lại width cho label nhỏ hơn */
     font-size: 16px;
     color: #4b5563;
 }
@@ -367,17 +368,17 @@
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .info-pair {
         min-width: 100%;
         flex-direction: row;
         align-items: flex-start;
     }
-    
+
     .info-pair label {
         min-width: 120px;
     }
-    
+
     .info-value {
         flex: 1;
     }
@@ -406,7 +407,7 @@
     .search-input-group input {
         width: 100%;
     }
-    
+
     .dropdown-table {
         width: 100%;
     }

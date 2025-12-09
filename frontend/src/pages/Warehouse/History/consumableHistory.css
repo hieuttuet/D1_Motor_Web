@@ -9,7 +9,8 @@
     --color-text-medium: #4b5563;
     --color-border: #d1d5db;
     --color-in: #059669; /* Xanh lá (IN/Nhập) */
-    --color-out: #ef4444; /* Đỏ (OUT/Xuất) */
+    --color-out: #4a9cdf; /* Vang (OUT/Xuất) */
+    --color-ter: #ef4444; /* Đỏ (TER/Tieu huy) */
     --color-adjust: #f59e0b; /* Vàng cam (ADJ/Điều chỉnh) */
     --color-excel: #107c41; /* Xanh lá đậm Excel */
     --radius-medium: 8px;
@@ -287,9 +288,14 @@
 }
 
 .type-out {
-    background-color: #fee2e2;
+    background-color: #e2f6fe;
     color: var(--color-out);
     border: 1px solid var(--color-out);
+}
+.type-ter {
+    background-color: #fee2e2;
+    color: var(--color-ter);
+    border: 1px solid var(--color-ter);
 }
 
 

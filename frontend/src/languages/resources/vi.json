@@ -29,11 +29,15 @@
     "logout": "Đăng xuất"
   },
   "sidebar": {
-    "warehouses": "Kho NVL",
+    "warehouses": "KHO NVL",
     "warehouses_label_print": "In Label",
     "warehouses_move": "Di chuyển NVL",
     "warehouses_history": "Lịch sử kho",
-    "admin": "Quản trị",
+    "machines": "MÁY",
+    "machines_inputs": "Nhập máy",
+    "machines_outputs": "Xuất máy",
+    "machines_history": "Lịch sử máy",
+    "admin": "QUẢN TRỊ",
     "admin_users": "Người dùng",
     "admin_consumable_specs": "TTTC NVL"
   },

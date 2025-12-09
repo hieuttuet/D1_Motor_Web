@@ -33,6 +33,10 @@
         "warehouses_label_print": "라벨 발행",
         "warehouses_move": "자재 이동",
         "warehouses_history": "창고 이력",
+        "machines": "기계",
+        "machines_inputs": "입력",
+        "machines_outputs": "출력",
+        "machines_history": "기계 이력",
         "admin": "관리자",
         "admin_users": "사용자",
         "admin_consumable_specs": "자재 정보 등록"

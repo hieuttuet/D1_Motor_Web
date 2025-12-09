@@ -7,8 +7,9 @@ import {
 } from "../../../api/warehouse/consumablePrintApi.js";
 import { showMessage } from "../../../components/Notification/messageService.jsx";
 import "./consumableLabelPrint.css";
-import { setupWebPrint, sendZplCode } from "../../../hooks/zebraPrinter.js";
+import { setupWebPrint, sendZplCode } from "../../../Utils/zebraPrinter.js";
 import { getConsumables } from "../../../api/admin/consumableApi.js";
+import { FaPrint } from "react-icons/fa";
 
 export default function ConsumableLabelPrint() {
   const [code, setCode] = useState("");
@@ -349,7 +350,7 @@ export default function ConsumableLabelPrint() {
 
       <div className="button-section">
         <button onClick={handlePrint} disabled={!consumableInfo || !quantity}>
-          🖨 PRINT
+          <FaPrint /> PRINT
         </button>
       </div>
     </div>

@@ -29,11 +29,15 @@
     "logout": "Logout"
   },
   "sidebar": {
-    "warehouses": "Warehouses",
+    "warehouses": "WAREHOUSES",
     "warehouses_label_print": "Print Label",
     "warehouses_move": "Consumable Move",
     "warehouses_history": "History",
-    "admin": "Admin",
+    "machines": "MACHINES",
+    "machines_inputs": "Inputs",
+    "machines_outputs":"Outputs",
+    "machines_history": "History",
+    "admin": "ADMIN",
     "admin_users": "Users",
     "admin_consumable_specs": "Consumable Specs"
   },

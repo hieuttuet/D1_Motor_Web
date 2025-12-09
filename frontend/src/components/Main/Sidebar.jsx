@@ -3,7 +3,7 @@ import "./sidebar.css";
 import { useState } from "react";
 import partronHome from "../../assets/icons/partron_home.png";
 import { FaChevronRight, FaChevronLeft, FaBars } from "react-icons/fa";
-import { useAuth } from "../../hooks/useAuth.jsx";
+import { useAuth } from "../useAuth.jsx";
 import { useTranslation } from "react-i18next";
 
 export default function Sidebar({ onToggle }) {
@@ -69,7 +69,37 @@ export default function Sidebar({ onToggle }) {
                 </Link>
               </div>
             </div>
+            {/* === MACHINES === */}
+            <div className="menu-section">
+              <div
+                className={`menu-title ${openMenu === "machines" ? "open" : ""}`}
+                onClick={() => toggleMenu("machines")}
+              >
+                <span>{t("sidebar.machines")}</span>
+                <FaChevronRight className="arrow" />
+              </div>
 
+              <div className={`submenu-container ${openMenu === "machines" ? "open" : ""}`}>
+                <Link
+                  to="/machines/machines-input"
+                  className={`submenu-item ${isActive("/machines/machines-input") ? "active" : ""}`}
+                >
+                  {t("sidebar.machines_inputs")}
+                </Link>
+                <Link
+                  to="/machines/machines-output"
+                  className={`submenu-item ${isActive("/machines/machines-output") ? "active" : ""}`}
+                >
+                  {t("sidebar.machines_outputs")}
+                </Link>
+                <Link
+                  to="/machines/machines-history"
+                  className={`submenu-item ${isActive("/machines/machines-history") ? "active" : ""}`}
+                >
+                  {t("sidebar.machines_history")}
+                </Link>
+              </div>
+            </div>
             {/* === ADMIN === */}
             {userRole === "Manager" && (
               <div className="menu-section">

@@ -1,15 +1,10 @@
 import db from "../config/db.js";
 
-//lay thong tin thời gian trên server
-export const getServerTime = async () => {
-  const [rows] = await db.query("SELECT NOW() AS server_time");
-  return rows; // => { server_time: '2025-11-19 10:20:30' }
-};
 // lấy tọa độ in ZPL
 export const getZPLPositionModel = async (label_id) => {
   const rows = await db.query("SELECT position_x, position_y FROM zpl_specs WHERE label_id = ? LIMIT 1", [label_id]);
   return rows[0];
-} 
+}
 //lay thong tin zpl code
 export const getZPLCodeModel = async (label_id) => {
   const rows = await db.query("SELECT zpl_code, position_x, position_y FROM zpl_specs WHERE label_id = ? LIMIT 1", [label_id]);
@@ -27,14 +22,14 @@ export const insertConsumableWithHistory = async (consumableData) => {
   try {
     await connection.beginTransaction();
 
-    const { 
+    const {
       consumable_spec_id, consumable_id, consumable_code, consumable_type,
       zpl_data, expiration, sequence, quantity, event_id, event_user,
     } = consumableData;
 
     // 1. Insert consumables
     const consumableResult = await connection.query(
-      `INSERT INTO consumables 
+      `INSERT INTO consumables
        (consumable_spec_id, consumable_id, consumable_code, consumable_type,zpl_data, expiration, sequence, quantity, event_id, event_user)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
@@ -45,7 +40,7 @@ export const insertConsumableWithHistory = async (consumableData) => {
 
     // 2. Insert consumable_history
     await connection.query(
-      `INSERT INTO consumable_history 
+      `INSERT INTO consumable_history
        (consumable_spec_id, consumable_id, consumable_code, consumable_type, zpl_data, expiration, sequence, quantity, event_id, event_user)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
@@ -70,7 +65,7 @@ export const insertConsumableWithHistory = async (consumableData) => {
 };
 // Cập nhật tọa độ in ZPL
 export const updateZPLPositionModel = async (label_id, position_x, position_y) => {
-  const result = await db.query(    
+  const result = await db.query(
     "UPDATE zpl_specs SET position_x = ?, position_y = ? WHERE label_id = ?",
     [position_x, position_y, label_id]
   );

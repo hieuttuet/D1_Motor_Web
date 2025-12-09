@@ -11,6 +11,22 @@ const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 8000;
 
+// ------------------------------------------------------
+// 📁 TẠO FOLDER UPLOAD NẾU CHƯA CÓ
+// ------------------------------------------------------
+const uploadDirs = [
+  path.join(__dirname, "uploads"),
+  path.join(__dirname, "uploads/machines")
+];
+
+uploadDirs.forEach(dir => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+    console.log("📁 Đã tạo folder:", dir);
+  }
+});
+// ------------------------------------------------------
+
 // Phục vụ các file tĩnh từ React build
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 console.log("Dist exists:", fs.existsSync(path.join(__dirname, "../frontend/dist/index.html")));

@@ -1,4 +1,5 @@
 import db from "../config/db.js";
+import { addOneDay } from "../middlewares/formatDate.js";
 
 //lấy thông tin lịch sử vật tư tiêu hao với phân trang và lọc
 export const getConsumableHistoryWithPagination = async (
@@ -27,19 +28,20 @@ export const getConsumableHistoryWithPagination = async (
     baseQuery += " AND event_id = ?";
     queryParams.push(filters.eventId);
   }
-  if (filters.fromDate) {
+  if (filters.startDate) {
     countQuery += " AND event_time >= ?";
     baseQuery += " AND event_time >= ?";
-    queryParams.push(filters.fromDate);
+    queryParams.push(filters.startDate);
   }
-  if (filters.toDate) {
+  if (filters.endDate) {
     countQuery += " AND event_time <= ?";
     baseQuery += " AND event_time <= ?";
-    queryParams.push(filters.toDate);
+    queryParams.push(addOneDay(filters.endDate));
   }
   baseQuery += " ORDER BY event_time DESC LIMIT ? OFFSET ?";
   // Trả về kết quả
   const countResult = await db.query(countQuery, queryParams);
+  console.log("query", baseQuery);
   const totalRecords = countResult[0].total;
   //Chuyển kết quả sang Number nếu DB trả về là BigInt
   const totalRecordsNumber =
@@ -72,13 +74,13 @@ export const downloadConsumableHistoryModel = async (filters) => {
     baseQuery += " AND event_id = ?";
     queryParams.push(filters.eventId);
   }
-  if (filters.fromDate) {
+  if (filters.startDate) {
     baseQuery += " AND event_time >= ?";
-    queryParams.push(filters.fromDate);
+    queryParams.push(filters.startDate);
   }
-  if (filters.toDate) {
+  if (filters.endDate) {
     baseQuery += " AND event_time <= ?";
-    queryParams.push(filters.toDate);
+    queryParams.push(addOneDay(filters.endDate));
   }
   baseQuery += " ORDER BY event_time DESC";
   const rows = await db.query(baseQuery, queryParams);

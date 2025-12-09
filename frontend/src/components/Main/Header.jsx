@@ -1,5 +1,5 @@
 import "./header.css";
-import { useAuth } from "../../hooks/useAuth.jsx";
+import { useAuth } from "../useAuth.jsx";
 import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher.jsx";

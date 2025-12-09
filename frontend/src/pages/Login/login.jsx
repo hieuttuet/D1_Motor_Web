@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../api/login/login.js";
-import { useAuth } from "../../hooks/useAuth.jsx";
+import { useAuth } from "../../components/useAuth.jsx";
 import "./login.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import partronLoginImg from "../../assets/icons/partron_login.png";
@@ -121,6 +121,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-    
+
   );
 }

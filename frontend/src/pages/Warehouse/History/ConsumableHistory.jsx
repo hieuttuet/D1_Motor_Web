@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { formatDateTimeAMPM } from "../../../hooks/date.js";
+import { formatDateTimeAMPM } from "../../../Utils/date.js";
 import { getConsumables } from "../../../api/admin/consumableApi.js";
 import { saveAs } from "file-saver";
 import "./consumableHistory.css";
@@ -210,6 +210,8 @@ export default function ConsumableHistory() {
         return "type-in";
       case "OWH": // Output Warehouse
         return "type-out";
+      case "TER": // Ter Warehouse
+        return "type-ter";
       default:
         return "";
     }

@@ -4,13 +4,13 @@ import { getConsumableHistoryWithPagination, downloadConsumableHistoryModel } fr
 // Lấy thông tin lịch sử vật tư tiêu hao với phân trang và lọc
 export const getConsumableHistoryController = async (req, res) => {
   try {
-    const { consumableCode, consumableId, eventId, fromDate, toDate, page, pageSize} = req.query;
+    const { consumableCode, consumableId, eventId, startDate, endDate, page, pageSize} = req.query;
     const filters = {
       consumableCode,
         consumableId,
         eventId,
-        fromDate,
-        toDate,
+        startDate,
+        endDate,
     };
     const historyList = await getConsumableHistoryWithPagination(filters, page, pageSize);
     return ok(res, historyList, "Lấy lịch sử vật tư tiêu hao thành cong");
@@ -22,13 +22,13 @@ export const getConsumableHistoryController = async (req, res) => {
 // Download toàn bộ lịch sử vật tư tiêu hao dưới dạng file excel
 export const downloadConsumableHistoryController = async (req, res) => {
   try {
-    const { consumableCode, consumableId, eventId, fromDate, toDate } = req.query;
+    const { consumableCode, consumableId, eventId, startDate, endDate } = req.query;
     const filters = {
       consumableCode,
         consumableId,
         eventId,
-        fromDate,
-        toDate,
+        startDate,
+        endDate,
     };
     // 1. Gọi Model để LẤY DỮ LIỆU THÔ
         const rows = await downloadConsumableHistoryModel(filters);

@@ -1,5 +1,6 @@
 import {getConsumableSpecByCode } from "../models/consumableSpecs.model.js";
-import { getServerTime, getSequenceConsumableCode, insertConsumableWithHistory, getZPLCodeModel, updateZPLPositionModel, getZPLPositionModel } from "../models/consumablePrint.model.js";
+import {getServerTime} from "../models/common.model.js";
+import { getSequenceConsumableCode, insertConsumableWithHistory, getZPLCodeModel, updateZPLPositionModel, getZPLPositionModel } from "../models/consumablePrint.model.js";
 import { ok, error } from "../middlewares/responseHandler.js";
 // lấy tọa độ in ZPL
 export const getZPLPositionController = async (req, res) => {
@@ -81,8 +82,8 @@ export const updateConsumableAndPrintZPLController = async (req, res) => {
       sequence: sequenceInDay,
       zpl_data: zplData,
       event_time: serverTime,
-      event_user: user_name,   
-      
+      event_user: user_name,
+
     };
     // Insert consumable và lịch sử
     const insertResult = await insertConsumableWithHistory(consumableToInsert);
@@ -91,16 +92,16 @@ export const updateConsumableAndPrintZPLController = async (req, res) => {
     return error(res, "Lỗi server", 500);
   }
 };
-// 🔹 Cập nhật tọa độ in ZPL  
+// 🔹 Cập nhật tọa độ in ZPL
 export const updateZPLLabelPositionController = async (req, res) => {
   try {
-    const { label_id } = req.params;  
+    const { label_id } = req.params;
     const { position_x, position_y } = req.body;
     const updateResult = await updateZPLPositionModel(label_id, position_x, position_y);
     // lấy lệnh in zpl mới sau khi cập nhật
     const zplRecord = await getZPLCodeModel(label_id);//lay thong tin zpl code
     if (!zplRecord) {
-      return error(res, "Không tìm thấy lệnh in ZPL", 404); 
+      return error(res, "Không tìm thấy lệnh in ZPL", 404);
     }
     const zplCodeTemplate = zplRecord.zpl_code;
     let zplData = zplCodeTemplate
