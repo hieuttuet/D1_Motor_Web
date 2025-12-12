@@ -149,20 +149,21 @@
   display: none;
 }
 
-.custom-file-upload {
-  background-color: #acc0df;
-  color: white;
+.form-group .custom-file-upload {
+  background-color: #97abc9;
+  color: rgb(0, 0, 0);
   padding: 3px 7px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 8px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 400;
   transition: background-color 0.2s;
-  border: none;
+  border: 1px solid #6c757d;
 }
 
 .custom-file-upload:hover {
-  background-color: #97abc9;
+  background-color: #acc0df;
+  border: 1px solid #5171a3;
 }
 
 .file-name-display {

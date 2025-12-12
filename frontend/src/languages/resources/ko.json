@@ -23,7 +23,7 @@
     "error": {
         "INVALID_PASSWORD": "비밀번호이 죽어요.",
         "USER_NOT_FOUND": "사용자가 없어요.",
-        "SERVER_ERROR": "서버에러."    
+        "SERVER_ERROR": "서버에러."
     },
     "header": {
         "logout": "로그아웃"
@@ -47,6 +47,7 @@
         "btn-add":"사용자 추가",
         "table": {
             "username":"사용자 이름",
+            "password":"비밀번호",
             "full_name":"이름",
             "role":"역할",
             "actions":"액션"

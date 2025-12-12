@@ -1,190 +1,459 @@
 /* Thiết lập container chung */
 .history-container {
     padding: 30px;
-    background-color: #f4f5f7;
-    min-height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5; /* Nền nhẹ, hiện đại */
+    min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Dùng font hiện đại hơn */
+    box-sizing: border-box;
 }
 
-/* Card tìm kiếm */
-.history-search-card {
+/* --- Thẻ chính (Card Design) --- */
+.history-search-card,
+.machine-list-panel,
+.history-detail-panel {
     background-color: #ffffff;
+    border-radius: 16px; /* Bo góc lớn hơn */
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08); /* Shadow sâu hơn, mềm mại hơn */
+    border: none;
+}
+.history-search-card {
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
+/* Header */
 .history-search-card h2 {
-    color: #1a4a8c;
+    color: #1e3a8a; /* Màu xanh đậm thương hiệu */
+    font-weight: 700;
+    font-size: 26px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 12px;
     margin-top: 0;
-    font-size: 24px;
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 10px;
+}
+.subtitle {
+    color: #6b7280;
+    font-style: normal;
+    font-size: 15px;
+    margin-top: 5px;
 }
 
-/* Form tìm kiếm */
-.search-form {
+/* --- KHU VỰC LỌC/TÌM KIẾM --- */
+.filter-form {
     display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 20px;
+    align-items: flex-end;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb; /* Đường kẻ solid */
 }
 
-.search-form input[type="text"] {
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
     flex-grow: 1;
-    padding: 12px 15px;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.2s;
 }
 
-.search-form input[type="text"]:focus {
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 6px;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 10px 14px; /* Tăng padding */
+    border: 1px solid #d1d5db;
+    border-radius: 8px; /* Bo góc nhẹ */
+    font-size: 15px;
+    background-color: #fafafa;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
     border-color: #3b82f6;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-.search-form button {
-    padding: 12px 25px;
-    background-color: #0d6efd;
+.filter-button {
+    padding: 10px 22px;
+    background-color: #1e3a8a; /* Màu xanh đậm */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    height: 42px; /* Chiều cao đồng bộ */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.filter-button:hover:not(:disabled) {
+    background-color: #102a63;
+}
+
+.filter-button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
+
+/* --- LAYOUT CHIA CỘT SIDE-BY-SIDE --- */
+.side-by-side-layout {
+    display: grid;
+    grid-template-columns: 380px 1fr; /* Cột trái rộng hơn 380px */
+    gap: 25px;
+    align-items: flex-start;
+}
+
+/* CỘT TRÁI: Danh sách Máy */
+.machine-list-panel {
+    padding: 15px;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+/* Header danh sách và nút Download Tổng hợp */
+.list-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+.machine-list-panel h4 {
+    color: #1e3a8a;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* NÚT TẢI BÁO CÁO TỔNG HỢP */
+.download-summary-button {
+    background-color: #6366f1; /* Màu tím nhẹ */
+    font-size: 13px;
+    padding: 8px 12px;
+    height: auto;
+}
+.download-summary-button:hover:not(:disabled) {
+    background-color: #4f46e5;
+}
+
+.machine-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Item trong Danh sách */
+.machine-list-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 2px solid transparent;
+    border-left: 5px solid #e5e7eb; /* Thanh trạng thái mỏng bên trái */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: #fcfcfc;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.machine-list-item:hover {
+    background-color: #f7f9fb;
+    border-color: #d1d5db;
+    border-left: 5px solid #3b82f6; /* Thanh trạng thái đổi màu khi hover */
+}
+
+.machine-list-item.active {
+    background-color: #eff6ff; /* Nền xanh nhạt khi được chọn */
+    border-color: #3b82f6;
+    border-left: 5px solid #1e3a8a; /* Thanh trạng thái xanh đậm */
+}
+
+.machine-image-col {
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.machine-thumbnail {
+    width: 50px; /* Ảnh lớn hơn */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px; /* Bo góc ảnh */
+    border: 1px solid #d1d5db;
+}
+
+.machine-info-col {
+    flex-grow: 1;
+}
+
+.machine-info-col h5 {
+    margin: 0;
+    font-size: 15px;
+    color: #1e3a8a;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.machine-info-col p {
+    margin: 3px 0;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* --- CỘT PHẢI: Chi tiết Lịch sử --- */
+.history-detail-panel {
+    padding: 30px;
+}
+
+.history-detail-content h3 {
+    color: #1e3a8a;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+/* --- STYLE GALLERY ẢNH --- */
+.machine-image-gallery {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e5e7eb;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.machine-image-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.detail-gallery-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: zoom-in;
+    transition: transform 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+}
+
+.detail-gallery-image:hover {
+    transform: scale(1.05);
+    border-color: #3b82f6;
+}
+
+/* CONTAINER MỚI cho Summary và Button Download Chi tiết */
+.detail-header-controls {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.detail-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.detail-summary-grid p {
+    margin: 0;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* NÚT DOWNLOAD CHI TIẾT */
+.download-excel-button {
+    padding: 10px 15px;
+    background-color: #10b981; /* Màu xanh lá (thành công) */
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: 10px;
 }
 
-.search-form button:hover:not(:disabled) {
-    background-color: #0b5ed7;
-    transform: translateY(-1px);
+.download-excel-button:hover:not(:disabled) {
+    background-color: #059669;
 }
 
-.search-form button:disabled {
+.download-excel-button:disabled {
     background-color: #adb5bd;
     cursor: not-allowed;
 }
 
-/* --- Khu vực kết quả và thông tin máy --- */
-.history-results-area {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.history-results-area h3 {
-    color: #1a4a8c;
-    font-size: 20px;
+.history-detail-content hr {
+    margin-top: 10px;
     margin-bottom: 20px;
-}
-
-.machine-summary-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
-    margin-bottom: 20px;
-    font-size: 15px;
-}
-
-.machine-summary-grid strong {
-    color: #495057;
-}
-
-hr {
     border: 0;
-    border-top: 1px solid #e9ecef;
-    margin: 20px 0;
+    border-top: 1px solid #e5e7eb;
 }
 
-/* --- Bảng Lịch Sử --- */
-.history-table-wrapper {
-    overflow-x: auto; /* Cho phép cuộn ngang nếu màn hình nhỏ */
-}
-
-.history-table-wrapper h4 {
-    color: #495057;
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
+/* --- Style Bảng Lịch sử --- */
 table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
     background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden; /* Giúp bo góc cho bảng */
 }
 
 table thead th {
-    background-color: #f8f9fa;
-    color: #495057;
+    background-color: #f3f4f6; /* Nền xám nhạt */
+    color: #374151;
     font-weight: 600;
     text-align: left;
-    padding: 12px 15px;
-    border-bottom: 2px solid #dee2e6;
+    padding: 15px 15px;
+    border-bottom: 2px solid #e5e7eb;
 }
 
 table tbody tr {
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid #e5e7eb;
     transition: background-color 0.1s;
 }
 
 table tbody tr:hover {
-    background-color: #f0f4f8;
+    background-color: #f8fafc;
 }
 
 table tbody td {
     padding: 12px 15px;
     vertical-align: top;
+    color: #4b5563;
 }
 
 .description-cell {
     max-width: 300px;
-    white-space: normal; /* Cho phép chữ xuống dòng */
+    white-space: normal;
 }
 
-/* --- Badge Trạng Thái --- */
+/* --- Badge Trạng Thái (Màu sắc hiện đại) --- */
 .status-badge {
     display: inline-block;
-    padding: 4px 10px;
-    border-radius: 50px;
+    padding: 5px 12px;
+    border-radius: 9999px; /* Pill shape */
     font-size: 12px;
     font-weight: 700;
     text-align: center;
     color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .status-new {
-    background-color: #0dcaf0; /* Cyan */
+    background-color: #3b82f6; /* Blue */
 }
 .status-active {
-    background-color: #198754; /* Green */
+    background-color: #10b981; /* Green */
 }
 .status-repair {
-    background-color: #ffc107; /* Yellow/Orange */
-    color: #333;
+    background-color: #f59e0b; /* Amber/Yellow */
+    color: white;
 }
 .status-default {
-    background-color: #6c757d; /* Grey */
+    background-color: #9ca3af; /* Grey */
+    color: white;
 }
 
+/* --- Style Phân trang nội bộ --- */
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0 5px 0;
+    border-top: 1px dashed #e5e7eb;
+    margin-top: 15px;
+}
+
+.pagination-controls button {
+    padding: 8px 15px;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #e5e7eb;
+}
+
+/* ... (Style loading/no-data) ... */
+.no-history-data, .loading-state {
+    color: #adb5bd;
+    font-style: italic;
+    padding: 15px;
+    text-align: center;
+}
+.loading-state {
+    color: #3b82f6;
+}
+.history-loading {
+    padding: 50px;
+}
+
+
 /* --- Responsive cho điện thoại --- */
-@media (max-width: 768px) {
-    .history-container {
+@media (max-width: 992px) {
+    /* Chuyển từ side-by-side sang xếp chồng (stack) */
+    .side-by-side-layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* Giới hạn list panel */
+    .machine-list-panel {
+        max-height: 400px;
         padding: 15px;
     }
 
-    .search-form {
+    /* Responsive cho header/filter */
+    .list-panel-header {
         flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .download-summary-button {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+    .filter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-group {
+        min-width: 100%;
+    }
+    .filter-button {
+        width: 100%;
+        margin-top: 10px;
     }
 
-    .machine-summary-grid {
-        grid-template-columns: 1fr; /* Stack cột trên điện thoại */
+    /* Responsive cho Detail Panel */
+    .detail-header-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .download-excel-button {
+        width: 100%;
+        margin-top: 0;
     }
 
-    /* Ẩn tiêu đề cột trên điện thoại và dùng data-label */
+    /* Responsive cho bảng (chuyển sang dạng thẻ) */
     table thead {
         display: none;
     }
@@ -196,7 +465,7 @@ table tbody td {
 
     table tr {
         margin-bottom: 15px;
-        border: 1px solid #dee2e6;
+        border: 1px solid #d1d5db;
         border-radius: 8px;
         padding: 10px;
     }
@@ -216,10 +485,6 @@ table tbody td {
         white-space: nowrap;
         text-align: left;
         font-weight: 600;
-        color: #495057;
-    }
-
-    .description-cell {
-        max-width: 100%;
+        color: #4b5563;
     }
 }

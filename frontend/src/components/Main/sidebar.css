@@ -1,11 +1,18 @@
-/* === BASE SIDEBAR  === */
+/* === BIẾN MÀU DỄ QUẢN LÝ === */
+:root {
+  --accent-color: #e4e000; /* Màu nhấn Cyan Nhạt (Dịu mắt) */
+  --text-primary-color: #f0f4f8;
+  --hover-bg-dark: rgba(255, 255, 255, 0.12);
+  --active-bg-dark: rgba(255, 255, 255, 0.22);
+  --sidebar-border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* === BASE SIDEBAR (GIỮ NGUYÊN STYLE GỐC) === */
 .sidebar {
   width: 250px;
   height: 100vh;
-
-  /* Giữ màu gốc của bạn */
+  /* MÀU NỀN GRADIENT GỐC */
   background: linear-gradient(180deg, #2f6597 0%, #27537c 100%);
-
   color: #f8fafc;
   display: flex;
   flex-direction: column;
@@ -15,20 +22,20 @@
   padding-top: 8px;
   overflow-x: hidden !important;
   overflow-y: auto;
-
-  /* Apple-style: shadow mềm, border siêu nhẹ */
   border-right: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 0 25px rgba(0,0,0,0.25);
   backdrop-filter: blur(10px);
   transition: width 0.3s ease;
   border-radius: 0 12px 12px 0;
+  z-index: 1000;
 }
 
-/* LOGO Apple-style */
+/* LOGO style (Hiển thị khi mở) */
 .sidebar-logo {
   text-align: center;
   padding: 15px 0;
-  border-bottom: #d3d3d3 0.5px solid;
+  border-bottom: var(--sidebar-border-color) 0.5px solid;
+  margin-bottom: 10px;
 }
 
 .sidebar-logo img {
@@ -38,88 +45,104 @@
 
 /* SECTION */
 .menu-section {
-  padding: 5px 0;
-  margin: 2px 0;
+  padding: 0;
 }
 
-/* === MENU TITLE === */
+/* === MENU TITLE (Mục cha) - Cải tiến === */
 .menu-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 15px;
-  font-size: 18px;
+  padding: 10px 15px;
+  font-size: 16px;
   font-weight: 500;
-  border-radius: 12px;
-  margin: 4px 8px;
+  border-radius: 8px;
+  margin: 4px 10px;
   cursor: pointer;
   color: rgba(255,255,255,0.9);
   transition: all 0.25s ease;
 }
 
-/* Hover nhẹ — Apple style */
-.menu-title:hover {
-  background: rgba(255,255,255,0.12);
+/* Container chứa Icon và Text */
+.menu-title .title-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/* OPEN STATE */
-.menu-title.open {
-  background: rgba(255,255,255,0.18);
+.menu-title .menu-icon {
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.25s ease;
+}
+
+.menu-title:hover {
+  background: var(--hover-bg-dark);
+}
+
+/* --- ACTIVE STATE (Chỉ đổi màu khi menu con được chọn) --- */
+.menu-title.active-parent {
+  background: var(--active-bg-dark);
   color: #ffffff;
 }
 
+/* Icon đổi sang màu nhấn chỉ khi active-parent */
+.menu-title.active-parent .menu-icon {
+  color: var(--accent-color);
+}
+
+/* Mũi tên (arrow) */
 .menu-title .arrow {
   transition: transform 0.25s ease;
 }
 
-.menu-title.open .arrow {
+.menu-title .arrow.open { /* Chỉ xoay khi có class "open" từ JSX */
   transform: rotate(90deg);
 }
+
 
 /* === SUBMENU === */
 .submenu-container {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transform: translateY(-4px);
-  transition: all 0.30s ease;
-  padding-left: 6px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  padding: 0 0 5px 0;
 }
 
 .submenu-container.open {
   max-height: 500px;
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* === SUBMENU ITEM === */
 .submenu-item {
   display: block;
   padding: 8px 14px;
-  margin: 2px 10px 2px 24px;
+  margin: 2px 10px 2px 35px;
   font-weight: 400;
   font-size: 14px;
-  color: rgba(255,255,255,0.9);
-
-  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 6px;
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
-/* Hover tinh tế */
 .submenu-item:hover {
-  background: rgba(255,255,255,0.15);
-  color: rgb(223, 206, 58);
+  background: var(--hover-bg-dark);
+  color: var(--text-primary-color);
 }
 
-/* Active phẳng */
 .submenu-item.active {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255, 255, 255, 0.15);
   font-weight: 500;
-  color: rgb(255, 255, 255);
+  color: var(--accent-color);
+
+  border-left: 3px solid var(--accent-color);
+  padding-left: 11px;
+  margin-left: 32px;
 }
 
-/* === TOGGLE BUTTON === */
+/* === TOGGLE BUTTON (GIỮ NGUYÊN STYLE GỐC) === */
 .btn-toggle {
   position: absolute;
   overflow: hidden;
@@ -137,6 +160,7 @@
   color: white;
   cursor: pointer;
   transition: all 0.25s ease;
+  z-index: 1001;
 }
 
 .btn-toggle:hover {
@@ -144,21 +168,49 @@
 }
 .btn-toggle:focus {
   outline: none;
-
 }
 
-/* === COLLAPSED === */
+/* === COLLAPSED (Tối ưu hóa trạng thái thu gọn) === */
 .sidebar.collapsed {
-  width: 68px;
+  width: 70px;
   border-radius: 0 14px 14px 0;
+
+  /* ĐẨY ICON XUỐNG DƯỚI NÚT TOGGLE */
+  padding-top: 60px;
 }
 
-.sidebar.collapsed .menu-title span,
+/* ẨN HOÀN TOÀN LOGO VÀ BORDER KHI COLLAPSED */
+.sidebar.collapsed .sidebar-logo,
+.sidebar.collapsed .sidebar-logo img {
+  display: none !important;
+}
+
+/* ẨN CHỮ */
+.sidebar.collapsed .menu-title span {
+  display: none !important;
+}
+
+/* CĂN GIỮA ICON */
+.sidebar.collapsed .menu-title .title-content {
+  justify-content: center;
+  width: 100%;
+}
+
+.sidebar.collapsed .menu-title {
+  justify-content: center;
+  margin: 8px auto;
+  width: 50px;
+  height: 40px;
+  padding: 0;
+}
+
+/* Ẩn mũi tên và submenu khi thu gọn */
+.sidebar.collapsed .menu-title .arrow,
 .sidebar.collapsed .submenu-container,
 .sidebar.collapsed .submenu-item {
   display: none !important;
 }
 
-.sidebar.collapsed .sidebar-logo img {
-  width: 55px;
+.sidebar.collapsed .menu-title .menu-icon {
+  color: #ffffff;
 }
