@@ -63,7 +63,7 @@ B3: Install dependencies ở thư mục backend
 npm install --production     
 
 B4:   
-pm2 reload D1_Web_Motor    
+pm2 reload D1_Motor_Web    
 pm2 save  
 
 
