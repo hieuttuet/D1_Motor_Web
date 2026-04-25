@@ -21,8 +21,8 @@ B6: Cài PM2 + PM2 WINDOWN SERVICE bằng lệnh:
 npm install -g pm2 pm2-windows-service  
 
 B7: Start ứng dụng NodeJS với PM2 (chạy ở folder backend và quyền admin)  
-mkdir C:\it\pm2_home (tạo thư mục pm2_home)   
-setx PM2_HOME "C:\it\pm2_home"  
+mkdir C:\pm2\pm2_home (tạo thư mục pm2_home)   
+setx PM2_HOME "C:\pm2\pm2_home"  
 quan trọng: Reset PC   
 cd C:\it\D1_Motor_Web\backend  
 pm2 start server.js --name D1_Motor_Web     
