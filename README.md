@@ -41,7 +41,7 @@ netsh advfirewall firewall add rule name="NodeJS 8000" dir=in action=allow proto
 Note cách fix khi có vấn đề:  
 pm2 delete  
 pm2-service-uninstall  
-mkdir C:\it\pm2_home (tạo thư mục pm2_home)   
+mkdir C:\pm2\pm2_home (tạo thư mục pm2_home)   
 set PM2_HOME "C:\pm2\pm2_home"  
 quan trọng: Reset PC   
 cd C:\it\D1_Motor_Web\backend  
