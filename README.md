@@ -48,10 +48,9 @@ quan trọng: Reset PC
 cd C:\it\D1_Motor_Web\backend  
 pm2 start server.js --name D1_Motor_Web     
 pm2 save    
-rồi làm B8
+rồi làm B9 
 
-
-UPDATE SERVER  
+Update New Ver SERVER  
 
 B1: git pull    
 
@@ -66,6 +65,17 @@ npm install --production
 B4:   
 pm2 reload D1_Motor_Web    
 pm2 save  
+
+Deloy New Web In SERVER  
+
+Bước 1: Buil Dist ở thư mục frontend  
+cd /d C:\it\D1_BGM_MES_WEB\frontend   
+npm install  
+npm run build    
+Bước 2: Khởi chạy ứng dụng mới (CMD backend quyền admin)   
+npm install --production  
+pm2 start server.js --name D1_BGM_MES_WEB  
+pm2 save
 
 
 
