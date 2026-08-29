@@ -79,6 +79,8 @@ pm2 save
 
 
 
+/------- lệnh chạy lại tất cả các web --------/
+pm2 resurrect
 
 
 
